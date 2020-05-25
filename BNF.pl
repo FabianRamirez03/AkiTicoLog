@@ -5,6 +5,8 @@
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero,Persona,S1,S).
 
 
+
+
 sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), nombre(Numero,Genero,Persona,S1,S).
 sintagma_nominal(Numero,primera,S0,S):- nombre(Numero,_,primera,S0,S).
 
@@ -22,12 +24,6 @@ determinante(plural,femenino,tercera,[las|S],S).
 
 %Nombres
 nombre(singular,masculino,tercera,[hombre|S],S).
-nombre(singular,femenino,tercera,[manzana|S],S).
-nombre(singular,masculino,tercera,[perro|S],S).
-nombre(singular,masculino,tercera,[gato|S],S).
-nombre(singular,femenino,tercera,[gata|S],S).
-nombre(singular,femenino,tercera,[perra|S],S).
-nombre(plural,femenino,tercera,[perras|S],S).
 nombre(singular,femenino,primera,[yo|S],S).
 nombre(singular,masculino,primera,[yo|S],S).
 nombre(plural,masculino,primera,[nosotros|S],S).
@@ -36,8 +32,23 @@ nombre(plural,femenino,primera,[nosotras|S],S).
 
 
 
-
+%Verbos
 verbo(singular,tercera,[come|S],S).
 verbo(plural,tercera ,[comen|S],S).
 verbo(singular,primera,[como|S],S).
 verbo(plural,primera,[comemos|S],S).
+verbo(singular, tercera, [tiene|S],S).
+verbo(singular, tercera, [es|S], S).
+
+
+famoso([[nombre, carlosAlvarado], [pelo, negro], [categoria, politico], [profesion, presidente]]).
+
+consultaPorNombre(Nombre):-famoso([[nombre, Nombre]|_]).
+
+consulta(Atributo, Descripcion):-famoso(Famoso),miembro([Atributo, Descripcion], Famoso).
+
+
+miembro(X, [X|_]).
+miembro(X, [_|R]):-miembro(X,R).
+
+
