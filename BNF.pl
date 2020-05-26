@@ -40,12 +40,22 @@ verbo(plural,primera,[comemos|S],S).
 verbo(singular, tercera, [tiene|S],S).
 verbo(singular, tercera, [es|S], S).
 
-
+%famosos
 famoso([[nombre, carlosAlvarado], [pelo, negro], [categoria, politico], [profesion, presidente]]).
+famoso([[nombre, oscarArias], [pelo, blanco], [categoria, politico], [profesion, presidente]]).
+famoso([[nombre, edgarSilva], [pelo, negro], [categoria, espectaculo], [profesion, presentador]]).
+famoso([[nombre, mauricioHoffman], [pelo, macho], [categoria, espectaculo], [profesion, presentador]]).
 
-consultaPorNombre(Nombre):-famoso([[nombre, Nombre]|_]).
 
-consulta(Atributo, Descripcion):-famoso(Famoso),miembro([Atributo, Descripcion], Famoso).
+
+
+consulta(Atributo,Descripcion):-famoso(Famoso),consultaAux(Atributo,Descripcion, Famoso).
+consultaDoble(Descripcion1,Descripcion2):-famoso(Famoso), consultaAux(_, Descripcion1, Famoso), consultaAux(_, Descripcion2, Famoso).
+
+consultaAux(Atributo,Descripcion, Famoso):-miembro([Atributo, Descripcion], Famoso).
+
+getName(Descripcion, Nombre):-getNameAux(Descripcion, Nombre).
+getNameAux(Descripcion, Nombre):-famoso(Famoso), consultaAux(_, Descripcion, Famoso), consultaAux(nombre, Nombre, Famoso).
 
 
 miembro(X, [X|_]).
