@@ -9,10 +9,11 @@ oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero
 
 sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), nombre(Numero,Genero,Persona,S1,S).
 sintagma_nominal(Numero,primera,S0,S):- nombre(Numero,_,primera,S0,S).
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), nombreC(Numero,Genero,S1,S).
 
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,Persona,S1,S).
-sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(Numero,primera,S1,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(_,S1,S).
+sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(_,S1,S).
 
 
 %Determinantes
@@ -22,23 +23,36 @@ determinante(singular,femenino,tercera,[la|S],S).
 determinante(plural,femenino,tercera,[las|S],S).
 
 
-%Nombres
+%Nombres Sujetos
 nombre(singular,masculino,tercera,[hombre|S],S).
 nombre(singular,femenino,primera,[yo|S],S).
 nombre(singular,masculino,primera,[yo|S],S).
 nombre(plural,masculino,primera,[nosotros|S],S).
 nombre(plural,femenino,primera,[nosotras|S],S).
+nombre(singular,adjetivo,primera,[pelo, largo|S],S).
+nombre(plural,adjetivo,primera,[uñas, pintadas|S],S).
 
+
+%Nombres Características
+nombreC(singular, masculino,[cabello|S],S).
+nombreC(plural, femenino,[uñas|S],S).
+nombreC(plural, masculino,[aretes|S],S).
+nombreC(plural, masculino,[lentes|S],S).
+nombreC(plural, masculino,[ojos|S],S).
+nombreC(plural, masculino,[ojos|S],S).
 
 
 
 %Verbos
-verbo(singular,tercera,[come|S],S).
-verbo(plural,tercera ,[comen|S],S).
-verbo(singular,primera,[como|S],S).
-verbo(plural,primera,[comemos|S],S).
+verbo(singular,tercera,[tiene|S],S).
+verbo(plural,tercera ,[tienen|S],S).
+verbo(singular,primera,[tengo|S],S).
+verbo(plural,primera,[tenemos|S],S).
 verbo(singular, tercera, [tiene|S],S).
-verbo(singular, tercera, [es|S], S).
+verbo(singular, primera, [uso|S], S).
+verbo(singular, primera, [uso|S], S).
+
+
 
 %famosos
 famoso([[nombre, carlosAlvarado], [pelo, negro], [categoria, politico], [profesion, presidente]]).
