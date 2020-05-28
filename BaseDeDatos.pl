@@ -1,9 +1,3 @@
-famoso("Carlos Alvarado").
-politico("Carlos Alvarado").
-presidente("Carlos Alvarado").
-
-
-
 %Determinantes
 determinante(singular,masculino,tercera,["el"|S],S).
 determinante(plural,masculino,tercera,["los"|S],S).
@@ -49,10 +43,14 @@ verbo(singular, primera, ["uso"|S], S).
 
 
 %famosos
-famoso([[nombre, "carlosAlvarado"], [pelo, "negro"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "oscarArias"], [pelo, "blanco"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "edgarSilva"], [pelo, "negro"], [categoria, "espectaculo"], [profesion, "presentador"]]).
-famoso([[nombre, "mauricioHoffman"], [pelo, "macho"], [categoria, "espectaculo"], [profesion, "presentador"]]).
+famoso([[nombre, "Carlos Alvarado"], [pelo, "negro"], [categoria, "politico"], [profesion, "presidente"]]).
+famoso([[nombre, "Oscar Arias"], [pelo, "blanco"], [categoria, "politico"], [profesion, "presidente"]]).
+famoso([[nombre, "Edgar Silva"], [pelo, "negro"], [categoria, "espectaculo"], [profesion, "presentador"]]).
+famoso([[nombre, "Mauricio Hoffman"], [pelo, "macho"], [categoria, "espectaculo"], [profesion, "presentador"]]).
+famoso("Carlos Alvarado").
+
+politico("Carlos Alvarado").
+presidente("Carlos Alvarado").
 
 
 
