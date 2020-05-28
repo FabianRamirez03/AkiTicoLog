@@ -21,7 +21,8 @@ sustantivo(plural, masculino,["aretes"|S],S).
 sustantivo(plural, masculino,["lentes"|S],S).
 sustantivo(plural, masculino,["ojos"|S],S).
 sustantivo(singular, femenino,["ropa"|S],S).
-
+sustantivo(singular, masculino,["presidente"|S],S).
+sustantivo(singular, femenino,["presidenta"|S],S).
 
 %Adjetivos
 adjetivo(plural,femenino,["pintadas"|S],S).
@@ -34,6 +35,7 @@ adjetivo(singular,_,["suave"|S],S).
 
 %Verbos
 verbo(singular,tercera,["tiene"|S],S).
+verbo(singular,tercera,["es"|S],S).
 verbo(plural,tercera ,["tienen"|S],S).
 verbo(singular,primera,["tengo"|S],S).
 verbo(plural,primera,["tenemos"|S],S).
