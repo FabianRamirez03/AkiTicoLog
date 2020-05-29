@@ -36,7 +36,7 @@ sustantivo(singular, masculino,["cientifico"|S],S).
 sustantivo(singular, masculino,["cientifica"|S],S).
 sustantivo(singular, masucilno,["cabello"|S],S).
 sustantivo(singular, _,["pelo"|S],S).
-sustantivo(singular, _,["en"|S],S).
+sustantivo(singular, _,["alto"|S],S).
 
 
 %Adjetivos
@@ -66,6 +66,11 @@ verbo(singular,tercera,["juega"|S],S).
 verbo(singular,tercera,["jugo"|S],S).
 verbo(singular,tercera,["murio"|S],S).
 verbo(singular,tercera,["mide"|S],S).
+
+
+%Respuestas
+respuesta(["Si"|S],S).
+respuesta(["No"|S],S).
 
 
 %famosos

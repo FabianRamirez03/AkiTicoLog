@@ -16,11 +16,15 @@ sujeto(singular,masculino,_,["sujeto"|S],S).
 
 
 %Conjunciones
-conjuncion([y|S],S).
+conjuncion(["y"|S],S).
+
+
+%Disyuncion
+disyuncion(["o"|S],S).
 
 
 %Preposiciones
-preposicion([de|S],S).
+preposicion(["de"|S],S).
 
 
 %Sustantivos
@@ -62,6 +66,11 @@ verbo(singular,tercera,["juega"|S],S).
 verbo(singular,tercera,["jugo"|S],S).
 verbo(singular,tercera,["murio"|S],S).
 verbo(singular,tercera,["mide"|S],S).
+
+
+%Respuestas
+respuesta(["Si"|S],S).
+respuesta(["No"|S],S).
 
 
 %famosos
