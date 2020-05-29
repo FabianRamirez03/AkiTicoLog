@@ -7,11 +7,21 @@ determinante(plural,femenino,tercera,["las"|S],S).
 
 
 %Sujetos
-sujeto(singular,masculino,tercera,["el"|S],S).
-sujeto(singular,femenino,tercera,["ella"|S],S).
+pronombre(singular,masculino,tercera,["el"|S],S).
+pronombre(singular,femenino,tercera,["ella"|S],S).
 sujeto(singular,femenino,_,["mujer"|S],S).
 sujeto(singular,masculino,_,["hombre"|S],S).
 sujeto(singular,_,_,["personaje"|S],S).
+sujeto(singular,masculino,_,["sujeto"|S],S).
+
+
+%Conjunciones
+conjuncion([y|S],S).
+
+
+%Preposiciones
+preposicion([de|S],S).
+
 
 %Sustantivos
 sustantivo(singular, masculino,["presidente"|S],S).
@@ -50,6 +60,8 @@ verbo(singular,tercera,["vive"|S],S).
 verbo(singular,tercera,["vivio"|S],S).
 verbo(singular,tercera,["juega"|S],S).
 verbo(singular,tercera,["jugo"|S],S).
+verbo(singular,tercera,["murio"|S],S).
+verbo(singular,tercera,["mide"|S],S).
 
 
 %famosos

@@ -15,6 +15,18 @@ sujeto(singular,_,_,["personaje"|S],S).
 sujeto(singular,masculino,_,["sujeto"|S],S).
 
 
+%Conjunciones
+conjuncion(["y"|S],S).
+
+
+%Disyuncion
+disyuncion(["o"|S],S).
+
+
+%Preposiciones
+preposicion(["de"|S],S).
+
+
 %Sustantivos
 sustantivo(singular, masculino,["presidente"|S],S).
 sustantivo(singular, femenino,["presidenta"|S],S).
@@ -52,6 +64,8 @@ verbo(singular,tercera,["vive"|S],S).
 verbo(singular,tercera,["vivio"|S],S).
 verbo(singular,tercera,["juega"|S],S).
 verbo(singular,tercera,["jugo"|S],S).
+verbo(singular,tercera,["murio"|S],S).
+verbo(singular,tercera,["mide"|S],S).
 
 
 %famosos
