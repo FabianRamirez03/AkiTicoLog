@@ -1,3 +1,4 @@
+
 %Determinantes
 determinante(singular,masculino,tercera,["el"|S],S).
 determinante(plural,masculino,tercera,["los"|S],S).
@@ -6,42 +7,51 @@ determinante(plural,femenino,tercera,["las"|S],S).
 
 
 %Sujetos
-sujeto(singular,masculino,tercera,["hombre"|S],S).
-sujeto(singular,femenino,primera,["yo"|S],S).
-sujeto(singular,masculino,primera,["yo"|S],S).
-sujeto(plural,masculino,primera,["nosotros"|S],S).
-sujeto(plural,femenino,primera,["nosotras"|S],S).
-sujeto(singular,adjetivo,primera,["pelo", largo|S],S).
-sujeto(plural,adjetivo,primera,["uñas", pintadas|S],S).
+pronombre(singular,masculino,tercera,["el"|S],S).
+pronombre(singular,femenino,tercera,["ella"|S],S).
+sujeto(singular,femenino,_,["mujer"|S],S).
+sujeto(singular,masculino,_,["hombre"|S],S).
+sujeto(singular,_,_,["personaje"|S],S).
+sujeto(singular,masculino,_,["sujeto"|S],S).
 
 
 %Sustantivos
-sustantivo(plural, femenino,["uñas"|S],S).
-sustantivo(plural, masculino,["aretes"|S],S).
-sustantivo(plural, masculino,["lentes"|S],S).
-sustantivo(plural, masculino,["ojos"|S],S).
-sustantivo(singular, femenino,["ropa"|S],S).
 sustantivo(singular, masculino,["presidente"|S],S).
 sustantivo(singular, femenino,["presidenta"|S],S).
+sustantivo(singular, masculino,["boxeador"|S],S).
+sustantivo(singular, femenino,["boxeadora"|S],S).
+sustantivo(singular, masculino,["cientifico"|S],S).
+sustantivo(singular, masculino,["cientifica"|S],S).
+sustantivo(singular, masucilno,["cabello"|S],S).
+sustantivo(singular, _,["pelo"|S],S).
+sustantivo(singular, _,["en"|S],S).
+
 
 %Adjetivos
-adjetivo(plural,femenino,["pintadas"|S],S).
-adjetivo(plural,_,["azules"|S],S).
-adjetivo(plural,masculino,["oscuros"|S],S).
-adjetivo(plural,_,["cafés"|S],S).
-adjetivo(singular,_,["suave"|S],S).
-
+adjetivo(singular,masculino,["negro"|S],S).
+adjetivo(singular,masculino,["cafe"|S],S).
+adjetivo(singular,masculino,["rubio"|S],S).
+adjetivo(singular,femenino,["rubia"|S],S).
+adjetivo(singular, masculino,["blanco"|S],S).
+adjetivo(singular,_,["Alajuela"|S],S).
+adjetivo(singular,_,["Heredia"|S],S).
+adjetivo(singular,_,["Cartago"|S],S).
+adjetivo(singular,_,["San Jose"|S],S).
+adjetivo(singular,_,["Puntarenas"|S],S).
+adjetivo(singular,_,["Guanacaste"|S],S).
+adjetivo(singular,_,["Limon"|S],S).
 
 
 %Verbos
 verbo(singular,tercera,["tiene"|S],S).
+verbo(singular,tercera,["tuvo"|S],S).
 verbo(singular,tercera,["es"|S],S).
-verbo(plural,tercera ,["tienen"|S],S).
-verbo(singular,primera,["tengo"|S],S).
-verbo(plural,primera,["tenemos"|S],S).
-verbo(singular, tercera, ["tiene"|S],S).
-verbo(singular, primera, ["uso"|S], S).
-verbo(singular, primera, ["uso"|S], S).
+verbo(singular,tercera,["fue"|S],S).
+verbo(singular,tercera,["nacio"|S],S).
+verbo(singular,tercera,["vive"|S],S).
+verbo(singular,tercera,["vivio"|S],S).
+verbo(singular,tercera,["juega"|S],S).
+verbo(singular,tercera,["jugo"|S],S).
 
 
 %famosos

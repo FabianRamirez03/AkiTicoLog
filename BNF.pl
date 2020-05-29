@@ -5,6 +5,7 @@ oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero
 
 sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sujeto(Numero,Genero,Persona,S1,S).
 sintagma_nominal(Numero,primera,S0,S):- sujeto(Numero,_,primera,S0,S).
+sintagma_nominal(Numero,Persona,S0,S):- pronombre(Numero,_,Persona,S0,S).
 
 
 %Sintagma Nominal utilizado en el sintagma Verbal
