@@ -8,16 +8,24 @@ sintagma_nominal(Numero,primera,S0,S):- sujeto(Numero,_,primera,S0,S).
 sintagma_nominal(Numero,Persona,S0,S):- pronombre(Numero,_,Persona,S0,S).
 
 
-%Sintagma Nominal utilizado en el sintagma Verbal
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S).
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S).
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1), adjetivo(Numero, Genero,S1,S).
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S).
+sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), nombre(Numero,Genero,Persona,S1,S).
+sintagma_nominal(Numero,Persona,S0,S):- nombre(Numero,_,Persona,S0,S).
+sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S).
+sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sustantivo(Numero,Genero,S1,S).
+sintagma_nominal(Numero,Genero,S0,S):- sustantivo(Numero,Genero,S0,S1), adjetivo(Numero, Genero,S1,S).
+sintagma_nominal(Numero,_,S0,S):- sustantivo(Numero,_,S0,S).
+sintagma_nominal(Numero,_,S0,S):- preposicion(S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S).
+sintagma_nominal(Numero,_,S0,S):- preposicion(S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S3),conjuncion(S3,S4),adjetivo(Numero,Genero,S4,S).
+sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sustantivo(Numero,Genero,S1,S2),sintagma_nominal(Numero,Genero ,S2,S).
+sintagma_nominal(Numero,Genero,S0,S):- preposicion(S0,S1),sustantivo(Numero,Genero,S1,S2), adjetivo(Numero, Genero,S2,S3),conjuncion(S3,S4), adjetivo(Numero, Genero,S4,S).
 
 
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(_,S1,S).
-sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(_,S1,S).
+sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1), verbo(Numero,Persona,S1,S).
+sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1), verbo(Numero,Persona,S1,S2),sintagma_nominal(Numero,Persona,S2,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,Persona,S1,S).
+sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(Numero,primera,S1,S).
 
 separarString(String, Lista):-split_string(String," ", "", Lista).
 
@@ -26,6 +34,61 @@ analizaTiene(String, Respuesta):-separarString(String, Lista), sintagma_nominal(
 
 analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Atributos = [Descripcion|_],  Verbo = "es", getName(Descripcion, Respuesta).
 analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Verbo = "es", Atributos = [_|Atributo], getName(Atributo, Respuesta).
+
+
+%Adjetivos
+
+adjetivo(singular,masculino,[largo|S],S).
+adjetivo(singular,masculino,[negro|S],S).
+adjetivo(singular,masculino,[alta|S],S).
+
+
+%Conjunciones
+conjuncion([y|S],S).
+
+
+%Preposiciones
+preposicion([de|S],S).
+
+
+%Nombres
+nombre(singular,masculino,tercera,[hombre|S],S).
+nombre(singular,femenino,primera,[yo|S],S).
+nombre(singular,masculino,primera,[yo|S],S).
+nombre(singular,femenino,tercera,[ella|S],S).
+nombre(singular,masculino,tercera,[el|S],S).
+nombre(plural,masculino,primera,[nosotros|S],S).
+nombre(plural,femenino,primera,[nosotras|S],S).
+
+
+
+
+
+%Verbos
+verbo(singular,tercera,[come|S],S).
+verbo(plural,tercera ,[comen|S],S).
+verbo(singular,primera,[como|S],S).
+verbo(plural,primera,[comemos|S],S).
+verbo(singular, tercera, [tiene|S],S).
+verbo(singular,tercera,[nacio|S],S).
+verbo(singular,tercera,[es|S],S).
+verbo(singular,tercera,[dedica|S],S).
+verbo(singular,tercera,[murio|S],S).
+verbo(singular,tercera,[mide|S],S).
+
+%Pronombres Reflexivos
+pronombre_reflexivo([me|S],S).
+pronombre_reflexivo([se|S],S).
+
+
+
+%famosos
+famoso([[nombre, carlosAlvarado], [pelo, negro], [categoria, politico], [profesion, presidente]]).
+famoso([[nombre, oscarArias], [pelo, blanco], [categoria, politico], [profesion, presidente]]).
+famoso([[nombre, edgarSilva], [pelo, negro], [categoria, espectaculo], [profesion, presentador]]).
+famoso([[nombre, mauricioHoffman], [pelo, macho], [categoria, espectaculo], [profesion, presentador]]).
+
+
 
 
 consulta(Atributo,Descripcion):-famoso(Famoso),consultaAux(Atributo,Descripcion, Famoso).
