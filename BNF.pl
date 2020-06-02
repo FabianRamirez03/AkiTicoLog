@@ -4,6 +4,16 @@
 crearHecho([Valor|_]):-atom_length(Valor,X),(X > 3 ->  asserta(valorRecibido(Valor))).
 limpiarHechos:- retractall(valorRecibido(_)).
 
+revisaLista(Head,S):-S = [Atributo|_],listaPelo(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,S):-S = [Atributo|_],listaLugares(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,S):-S = [Atributo|_],listaAños(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,S):-S = [Atributo|_],listaGenero(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,S):-S = [Atributo|_],listaOficio(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,S):-S = [Atributo|_],listaAltura(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+
+
+
+
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero,Persona,S1,S).
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), negacion(S1,S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,S1),sintagma_nominal(Numero,Persona,S1, S2), sintagma_verbal(Numero,Persona,S2,S).
@@ -20,26 +30,32 @@ sintagma_nominal(Numero,Persona,S0,S):- sujeto(Numero,_,Persona,S0,S).
 sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
                                 sustantivo(Numero,Genero,S1,S2),
                                 adjetivo(Numero,Genero,S2,S),
-                                crearHecho(S2),!.
+                                revisaLista(Head, S2),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
                                 sustantivo(Numero,Genero,S1,S),
-                                crearHecho(S1),!.
+                                revisaLista(Head, S1),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1),
                                 adjetivo(Numero, Genero,S1,S),
-                                crearHecho(S1),!.
+                                revisaLista(Head, S1),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S),
-                                crearHecho(S0),!.
+                                revisaLista(Head, S0),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- adjetivo(Numero,_,S0,S),
-                                crearHecho(S0),!.
+                                revisaLista(Head, S0),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
                                 sustantivo(Numero,Genero,S1,S2),
                                 adjetivo(Numero,Genero,S2,S),
-                                crearHecho(S2),!.
+                                revisaLista(Head, S2),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
                                 sustantivo(Numero,Genero,S1,S2),
@@ -47,35 +63,42 @@ sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
                                 crearHecho(S3),
                                 conjuncion(S3,S4),
                                 adjetivo(Numero,Genero,S4,S),
-                                crearHecho(S4),!.
+                                revisaLista(Head, S4),
+                                crearHecho([Head|_]),!.
 
 sintagma_nominal(_,S0,S):- preposicion(S0,S1),
                            determinante(Numero,Genero,_,S1,S2),
                            sustantivo(Numero,Genero,S2,S),
-                           crearHecho(S2),!.
+                           revisaLista(Head, S2),
+                           crearHecho([Head|_]),!.
 
 sintagma_nominal(_,S0,S):- preposicion(S0,S1),
                            determinante(Numero,Genero,_,S1,S2),
                            sustantivo(Numero,Genero,S2,S3),
                            adjetivo(Numero,Genero,S3,S),
-                           crearHecho(S3),!.
+                           revisaLista(Head, S3),
+                           crearHecho([Head|_]),!.
 
 sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
                                 sustantivo(Numero,Genero,S1,S2),
-                                crearHecho(S2),
+                                revisaLista(Head, S2),
+                                crearHecho([Head|_]),
                                 sintagma_nominal(Numero,S2,S),!.
 
 sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
                                 sustantivo(Numero,Genero,S1,S2),
                                 adjetivo(Numero, Genero,S2,S3),
-                                crearHecho(S3),
+                                revisaLista(Head1, S3),
+                                crearHecho([Head1|_]),
                                 conjuncion(S3,S4),
                                 adjetivo(Numero, Genero,S4,S),
-                                crearHecho(S4),!.
+                                revisaLista(Head2, S4),
+                                crearHecho([Head2|_]),!.
 
 sintagma_nominal(_,S0,S):- preposicion(S0,S1),
                            adjetivo(_,_,S1,S),
-                           crearHecho(S1),!.
+                           revisaLista(Head, S1),
+                           crearHecho([Head|_]),!.
 
 
 sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1),
@@ -196,24 +219,56 @@ lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su pers
 insertarFinal(X,[ ],[X]).
 insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
 
-akiTicoLog:-pregunta1.
-pregunta1:-limpiarHechos,write("ï¿½Su personaje es hombre o mujer?"),nl,read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta2.
-
-pregunta2:-write("ï¿½A que se dedica su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta3.
-
-pregunta3:-write("ï¿½Donde naciï¿½ su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta4.
 
 
-pregunta4:-write("ï¿½En que aï¿½o naciï¿½ su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta5.
+akiTicoLog:-pregunta1, pregunta2, pregunta3,  pregunta4,  pregunta5,  respuesta.
 
-pregunta5:-write("ï¿½Cuantï¿½ mide su personaj?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),write(LC),nl,respuesta.
+pregunta1:-limpiarHechos,
+           write("ï¿½Su personaje es hombre o mujer?"),nl,
+           read(X),
+           separarString(X,Lista),
+           oracion(Lista,[]),
+           findall(C, valorRecibido(C), _).
+           %pregunta2.
 
-respuesta:-famoso(X, Personaje), sublista(LC, Personaje),write(X).
+pregunta2:-write("ï¿½A que se dedica su personaje?"),nl,
+           read(X),
+           separarString(X,Lista),
+           oracion(Lista,[]),
+           findall(C, valorRecibido(C), _).
+           %pregunta3.
+
+pregunta3:-write("ï¿½Donde naciï¿½ su personaje?"),nl,
+           read(X),
+           separarString(X,Lista),
+           oracion(Lista,[]),
+           findall(C, valorRecibido(C), _).
+           %pregunta4.
+
+
+pregunta4:-write("ï¿½En que aï¿½o naciï¿½ su personaje?"),nl,
+           read(X),
+           separarString(X,Lista),
+           oracion(Lista,[]),
+           findall(C, valorRecibido(C), _).
+           %pregunta5.
+
+pregunta5:-write("ï¿½Cuantï¿½ mide su personaj?"),nl,
+           read(X),
+           separarString(X,Lista),
+           oracion(Lista,[]),
+           findall(C, valorRecibido(C), LC),
+           write(LC),nl.
+           %respuesta.
+
+respuesta:-famoso(X, Personaje), sublista(_, Personaje),write(X).
 
 
 
-miembro(X, [X|_]).
-miembro(X, [_|R]):-miembro(X,R).
+sublista([], _).
+sublista([X|L], L2):- miembro(X, L2), sublista(L, L2).
+
+
 mostrar(L,[]) :- mostrarLista([L|_]).
 mostrarLista([L|R]) :-  writeln(L), mostrar([R|_],[]).
 
