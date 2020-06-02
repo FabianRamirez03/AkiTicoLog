@@ -4,6 +4,7 @@ determinante(singular,masculino,tercera,["el"|S],S).
 determinante(plural,masculino,tercera,["los"|S],S).
 determinante(singular,femenino,tercera,["la"|S],S).
 determinante(plural,femenino,tercera,["las"|S],S).
+determinante(singular,_,_,["mi"|S],S).
 
 
 %Sujetos
@@ -18,6 +19,8 @@ sujeto(singular,masculino,_,["sujeto"|S],S).
 %Conjunciones
 conjuncion(["y"|S],S).
 
+%Negación
+negacion(["no"|S],S).
 
 %Disyuncion
 disyuncion(["o"|S],S).
@@ -33,15 +36,27 @@ sustantivo(singular, femenino,["presidenta"|S],S).
 sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, femenino,["boxeadora"|S],S).
 sustantivo(singular, masculino,["cientifico"|S],S).
+sustantivo(singular, femenino,["politica"|S],S).
+sustantivo(singular, masculino,["politico"|S],S).
 sustantivo(singular, masculino,["cientifica"|S],S).
-sustantivo(singular, masucilno,["cabello"|S],S).
+sustantivo(singular, masuclino,["cabello"|S],S).
+sustantivo(singular, femenino,["mujer"|S],S).
+sustantivo(singular, masculino,["hombre"|S],S).
+sustantivo(singular, femenino,["alta"|S],S).
+sustantivo(singular, masculino,["alto"|S],S).
+sustantivo(singular, femenino,["presentadora"|S],S).
+sustantivo(singular, masculino,["presentador"|S],S).
+sustantivo(singular, _,["40"|S],S).
+sustantivo(singular, _,["59"|S],S).
+sustantivo(singular, _,["72"|S],S).
+sustantivo(singular, _,["36"|S],S).
+sustantivo(singular, _,["en"|S],S).
 sustantivo(singular, _,["pelo"|S],S).
-sustantivo(singular, _,["alto"|S],S).
 
 
 %Adjetivos
 adjetivo(singular,masculino,["negro"|S],S).
-adjetivo(singular,masculino,["cafe"|S],S).
+adjetivo(singular,_,["cafe"|S],S).
 adjetivo(singular,masculino,["rubio"|S],S).
 adjetivo(singular,femenino,["rubia"|S],S).
 adjetivo(singular, masculino,["blanco"|S],S).
@@ -55,6 +70,8 @@ adjetivo(singular,_,["Limon"|S],S).
 
 
 %Verbos
+verbo(singular,tercera,["hace"|S],S).
+verbo(singular,tercera,["hizo"|S],S).
 verbo(singular,tercera,["tiene"|S],S).
 verbo(singular,tercera,["tuvo"|S],S).
 verbo(singular,tercera,["es"|S],S).
@@ -73,11 +90,11 @@ respuesta(["Si"|S],S).
 respuesta(["No"|S],S).
 
 
-%famosos
-famoso([[nombre, "Carlos Alvarado"], [pelo, "negro"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "Oscar Arias"], [pelo, "blanco"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "Edgar Silva"], [pelo, "negro"], [categoria, "espectaculo"], [profesion, "presentador"]]).
-famoso([[nombre, "Mauricio Hoffman"], [pelo, "macho"], [categoria, "espectaculo"], [profesion, "presentador"]]).
+
+famoso([[nombre, "Carlos Alvarado"], [sexo, "hombre"], [pelo, "negro"], [dedicacion, "presidente"],[vive, "San Jose"],[edad, "40"]]).
+famoso([[nombre, "Oscar Arias"], [sexo, "hombre"], [pelo, "blanco"], [dedicacion, "politico"],[vive, "San Jose"],[edad, "79"]]).
+famoso([[nombre, "Edgar Silva"], [sexo, "hombre"], [pelo, "negro"], [dedicacion, "presentador"],[vive, "San Jose"],[edad, "52"]]).
+famoso([[nombre, "Mauricio Hoffman"], [sexo,"hombre"], [pelo, "rubio"], [dedicacion, "presentador"],[vive,"San Jose"],[edad, "36"]]).
 famoso("Carlos Alvarado").
 
 politico("Carlos Alvarado").
