@@ -4,11 +4,15 @@ determinante(singular,masculino,tercera,["el"|S],S).
 determinante(plural,masculino,tercera,["los"|S],S).
 determinante(singular,femenino,tercera,["la"|S],S).
 determinante(plural,femenino,tercera,["las"|S],S).
+<<<<<<< HEAD:basededatos.pl~
 determinante(singular,masculino,tercera,["mi"|S],S).
 determinante(singular,femenino,tercera,["mi"|S],S).
 determinante(plural,femenino,tercera,["mis"|S],S).
 determinante(plural,masculino,tercera,["mis"|S],S).
 determinante(singular,femenino,tercera,["una"|S],S).
+=======
+determinante(singular,_,_,["mi"|S],S).
+>>>>>>> Development:BaseDeDatos.pl~
 
 
 %Sujetos
@@ -31,6 +35,8 @@ pronombre(singular,masculino,tercera,["el"|S],S).
 %Conjunciones
 conjuncion(["y"|S],S).
 
+%Negación
+negacion(["no"|S],S).
 
 %Disyuncion
 disyuncion(["o"|S],S).
@@ -59,9 +65,25 @@ sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, femenino,["boxeadora"|S],S).
 sustantivo(singular, masculino,["cientifico"|S],S).
 sustantivo(singular, masculino,["cientifica"|S],S).
+<<<<<<< HEAD:basededatos.pl~
 sustantivo(singular, masucilno,["cabello"|S],S).
 sustantivo(singular, _,["pelo"|S],S).
 sustantivo(singular, _,["alto"|S],S).
+=======
+sustantivo(singular, masuclino,["cabello"|S],S).
+sustantivo(singular, femenino,["mujer"|S],S).
+sustantivo(singular, masculino,["hombre"|S],S).
+sustantivo(singular, femenino,["alta"|S],S).
+sustantivo(singular, masculino,["alto"|S],S).
+sustantivo(singular, femenino,["presentadora"|S],S).
+sustantivo(singular, masculino,["presentador"|S],S).
+sustantivo(singular, _,["40"|S],S).
+sustantivo(singular, _,["59"|S],S).
+sustantivo(singular, _,["72"|S],S).
+sustantivo(singular, _,["36"|S],S).
+sustantivo(singular, _,["en"|S],S).
+sustantivo(singular, _,["pelo"|S],S).
+>>>>>>> Development:BaseDeDatos.pl~
 
 
 %Adjetivos
@@ -73,7 +95,7 @@ adjetivo(singular,_,["suave"|S],S).
 adjetivo(singular,masculino,["largo"|S],S).
 adjetivo(singular,masculino,["alta"|S],S).
 adjetivo(singular,masculino,["negro"|S],S).
-adjetivo(singular,masculino,["cafe"|S],S).
+adjetivo(singular,_,["cafe"|S],S).
 adjetivo(singular,masculino,["rubio"|S],S).
 adjetivo(singular,femenino,["rubia"|S],S).
 adjetivo(singular, masculino,["blanco"|S],S).
@@ -90,6 +112,8 @@ adjetivo(singular,_,["1.70"|S],S).
 
 
 %Verbos
+verbo(singular,tercera,["hace"|S],S).
+verbo(singular,tercera,["hizo"|S],S).
 verbo(singular,tercera,["tiene"|S],S).
 verbo(plural,tercera ,["tienen"|S],S).
 verbo(singular,primera,["tengo"|S],S).
@@ -120,10 +144,10 @@ pronombre_reflexivo(["se"|S],S).
 
 
 %famosos
-famoso([[nombre, "Carlos Alvarado"], [pelo, "negro"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "Oscar Arias"], [pelo, "blanco"], [categoria, "politico"], [profesion, "presidente"]]).
-famoso([[nombre, "Edgar Silva"], [pelo, "negro"], [categoria, "espectaculo"], [profesion, "presentador"]]).
-famoso([[nombre, "Mauricio Hoffman"], [pelo, "macho"], [categoria, "espectaculo"], [profesion, "presentador"]]).
+famoso([[nombre, "Carlos Alvarado"], [pelo, "negro"], [categoria, "politico"], [profesion, "presidente"],[edad, "40"]]).
+famoso([[nombre, "Oscar Arias"], [pelo, "blanco"], [categoria, "politico"], [profesion, "presidente"],[edad, "79"]]).
+famoso([[nombre, "Edgar Silva"], [pelo, "negro"], [categoria, "presentador"], [profesion, "presentador"],[edad, "52"]]).
+famoso([[nombre, "Mauricio Hoffman"], [pelo,"rubio"], [categoria, "presentador"], [profesion, "presentador"],[edad, "36"]]).
 famoso("Carlos Alvarado").
 famoso("Paquita",[alajuela,1960,mujer,deportes,rubia,1.70]).
 

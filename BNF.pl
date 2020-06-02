@@ -5,6 +5,7 @@ crearHecho([Valor|_]):-atom_length(Valor,X),(X > 3 ->  asserta(valorRecibido(Val
 limpiarHechos:- retractall(valorRecibido(_)).
 
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero,Persona,S1,S).
+oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), negacion(S1,S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,S1),sintagma_nominal(Numero,Persona,S1, S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,[","|S1]),sintagma_nominal(Numero,Persona,S1, S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,S).
@@ -41,6 +42,26 @@ sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nom
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),verbo(Numero,Persona,S3,S4), sintagma_nominal(Numero,S4,S),!.
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S),!.
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S),!.
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),verbo(Numero,Persona,S3,S4),sintagma_nominal(Numero,S4,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),determinante(Numero,Genero,Persona,S3,S4), sujeto(Numero,Genero ,Persona,S4,S5), verbo(Numero,Persona,S5,S6),sintagma_nominal(Numero,S6,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sujeto(Numero,_,Persona,S3,S4), verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),pronombre(Numero,_,Persona,S3,S4),verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),verbo(Numero,Persona,S3,S4), sintagma_nominal(Numero,S4,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S).
+
+
+analizaGramatica(Oracion) :- oracion(Oracion,[]),!.
+analizaGramatica(_) :- writeln("La oraciï¿½n ingresada no es reconocida"),nl.
+
+
+
+%Operaciones Bï¿½sicas
+
+separarString(String, Lista):-split_string(String," ", "", Lista).
+
+miembro(X, [X|_]).
+miembro(X, [_|R]):-miembro(X,R).
 
 
 consulta(Atributo,Descripcion):-famoso(Famoso),consultaAux(Atributo,Descripcion, Famoso).
@@ -52,29 +73,30 @@ getName(Descripcion, Nombre):-getNameAux(Descripcion, Nombre).
 getNameAux(Descripcion, Nombre):-famoso(Famoso), consultaAux(_, Descripcion, Famoso), consultaAux(nombre, Nombre, Famoso).
 
 
-separarString(String, Lista):-split_string(String," ", "", Lista).
-
-
 analizaTiene(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 =
 [Verbo|Atributos], Verbo = "tiene", Atributos = [_, Descripcion], getName(Descripcion, Respuesta).
 
 
-
 analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Atributos = [Descripcion|_],  Verbo = "es", getName(Descripcion, Respuesta).
 analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Verbo = "es", Atributos = [_|Atributo], getName(Atributo, Respuesta).
+lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su personaje?",
+       "Su personaje es alto?","Cual es la profesiï¿½n de su personaje?",
+       "En quï¿½ provincia vive su personaje?","Quï¿½ edad tiene su personaje?"]).
 
+insertarFinal(X,[ ],[X]).
+insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
 
 akiTicoLog:-pregunta1.
-pregunta1:-limpiarHechos,write("¿Su personaje es hombre o mujer?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta2.
+pregunta1:-limpiarHechos,write("ï¿½Su personaje es hombre o mujer?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta2.
 
-pregunta2:-write("¿A que se dedica su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta3.
+pregunta2:-write("ï¿½A que se dedica su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta3.
 
-pregunta3:-write("¿Donde nació su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta4.
+pregunta3:-write("ï¿½Donde naciï¿½ su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta4.
 
 
-pregunta4:-write("¿En que año nació su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta5.
+pregunta4:-write("ï¿½En que aï¿½o naciï¿½ su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta5.
 
-pregunta5:-write("¿Cuantó mide su personaj?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),write(LC),nl,respuesta.
+pregunta5:-write("ï¿½Cuantï¿½ mide su personaj?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),write(LC),nl,respuesta.
 
 respuesta:-famoso(X, Personaje), sublista(LC, Personaje),write(X).
 
@@ -82,15 +104,31 @@ respuesta:-famoso(X, Personaje), sublista(LC, Personaje),write(X).
 
 miembro(X, [X|_]).
 miembro(X, [_|R]):-miembro(X,R).
+mostrar(L,[]) :- mostrarLista([L|_]).
+mostrarLista([L|R]) :-  writeln(L), mostrar([R|_],[]).
 
-sublista([], _).
-sublista([X|L], L2):- miembro(X, L2), sublista(L, L2).
+inicio() :-
 
+    nl,
+    writeln("Piensa en un personaje y responde las siguientes preguntas"),
+    nl,
 
+    writeln("Su personaje es mujer?"), nl,
+    read(Oracion1), nl, %insertarFinal(L,[Oracion1],L),
+    separarString(Oracion1, A), analizaGramatica(A),
 
+    writeln("El pelo de su personaje es de color negro?"), nl,
+    read(Oracion2), nl, %insertarFinal(L,[Oracion2],L),
+    separarString(Oracion2, B), analizaGramatica(B),
 
+    writeln("A quï¿½ se dedica su personaje?"), nl,
+    read(Oracion3), nl, %insertarFinal(L,[Oracion3],L),
+    separarString(Oracion3,C), analizaGramatica(C),
 
+    writeln("En quï¿½ provincia vive?"), nl,
+    read(Oracion4), nl, %insertarFinal(L,[Oracion4],L),
+    separarString(Oracion4,D), analizaGramatica(D),
 
-
-
-
+    writeln("Quï¿½ edad tiene?"), nl,
+    read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
+    separarString(Oracion5,E), analizaGramatica(E).

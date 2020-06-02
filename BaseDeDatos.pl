@@ -31,6 +31,8 @@ pronombre(singular,masculino,tercera,["el"|S],S).
 %Conjunciones
 conjuncion(["y"|S],S).
 
+%Negaciï¿½n
+negacion(["no"|S],S).
 
 %Disyuncion
 disyuncion(["o"|S],S).
@@ -58,10 +60,22 @@ sustantivo(singular, femenino,["presidenta"|S],S).
 sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, femenino,["boxeadora"|S],S).
 sustantivo(singular, masculino,["cientifico"|S],S).
+sustantivo(singular, femenino,["politica"|S],S).
+sustantivo(singular, masculino,["politico"|S],S).
 sustantivo(singular, masculino,["cientifica"|S],S).
-sustantivo(singular, masucilno,["cabello"|S],S).
+sustantivo(singular, masuclino,["cabello"|S],S).
+sustantivo(singular, femenino,["mujer"|S],S).
+sustantivo(singular, masculino,["hombre"|S],S).
+sustantivo(singular, femenino,["alta"|S],S).
+sustantivo(singular, masculino,["alto"|S],S).
+sustantivo(singular, femenino,["presentadora"|S],S).
+sustantivo(singular, masculino,["presentador"|S],S).
+sustantivo(singular, _,["40"|S],S).
+sustantivo(singular, _,["59"|S],S).
+sustantivo(singular, _,["72"|S],S).
+sustantivo(singular, _,["36"|S],S).
+sustantivo(singular, _,["en"|S],S).
 sustantivo(singular, _,["pelo"|S],S).
-sustantivo(singular, _,["alto"|S],S).
 
 
 %Adjetivos
@@ -73,7 +87,7 @@ adjetivo(singular,_,["suave"|S],S).
 adjetivo(singular,masculino,["largo"|S],S).
 adjetivo(singular,masculino,["alta"|S],S).
 adjetivo(singular,masculino,["negro"|S],S).
-adjetivo(singular,masculino,["cafe"|S],S).
+adjetivo(singular,_,["cafe"|S],S).
 adjetivo(singular,masculino,["rubio"|S],S).
 adjetivo(singular,femenino,["rubia"|S],S).
 adjetivo(singular, masculino,["blanco"|S],S).
@@ -90,6 +104,8 @@ adjetivo(singular,_,["1.70"|S],S).
 
 
 %Verbos
+verbo(singular,tercera,["hace"|S],S).
+verbo(singular,tercera,["hizo"|S],S).
 verbo(singular,tercera,["tiene"|S],S).
 verbo(plural,tercera ,["tienen"|S],S).
 verbo(singular,primera,["tengo"|S],S).
@@ -134,10 +150,10 @@ presidente("Carlos Alvarado").
 
 
 %Preguntas
-pregunta("¿Su Personaje Es Hombre o mujer?").
-pregunta("¿A qué se dedica su personaje?").
-pregunta("¿En cuál provincia nació su personaje?").
-pregunta("¿Sabe alguna caracteristica extra que desee proporcionar?").
+pregunta("ï¿½Su Personaje Es Hombre o mujer?").
+pregunta("ï¿½A quï¿½ se dedica su personaje?").
+pregunta("ï¿½En cuï¿½l provincia naciï¿½ su personaje?").
+pregunta("ï¿½Sabe alguna caracteristica extra que desee proporcionar?").
 
 
 
