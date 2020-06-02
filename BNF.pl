@@ -17,38 +17,148 @@ sintagma_nominal(Numero,Persona,S0,S):- pronombre(Numero,_,Persona,S0,S).
 sintagma_nominal(Numero,Persona,S0,S):- sujeto(Numero,_,Persona,S0,S).
 
 %SN utilizado en el SV
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S),crearHecho(S2),!.
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S),crearHecho(S1),!.
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1), adjetivo(Numero, Genero,S1,S),crearHecho(S1),!.
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S),crearHecho(S0),!.
-sintagma_nominal(Numero,S0,S):- adjetivo(Numero,_,S0,S),crearHecho(S0),!.
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S),crearHecho(S2),!.
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S3),crearHecho(S3),conjuncion(S3,S4),adjetivo(Numero,Genero,S4,S),crearHecho(S4),!.
-sintagma_nominal(_,S0,S):- preposicion(S0,S1), determinante(Numero,Genero,_,S1,S2), sustantivo(Numero,Genero,S2,S),crearHecho(S2),!.
-sintagma_nominal(_,S0,S):- preposicion(S0,S1), determinante(Numero,Genero,_,S1,S2), sustantivo(Numero,Genero,S2,S3),adjetivo(Numero,Genero,S3,S),crearHecho(S3),!.
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S2),crearHecho(S2),sintagma_nominal(Numero,S2,S),!.
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),sustantivo(Numero,Genero,S1,S2), adjetivo(Numero, Genero,S2,S3),crearHecho(S3),conjuncion(S3,S4), adjetivo(Numero, Genero,S4,S),crearHecho(S4),!.
-sintagma_nominal(_,S0,S):- preposicion(S0,S1),adjetivo(_,_,S1,S),crearHecho(S1),!.
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
+                                sustantivo(Numero,Genero,S1,S2),
+                                adjetivo(Numero,Genero,S2,S),
+                                crearHecho(S2),!.
+
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
+                                sustantivo(Numero,Genero,S1,S),
+                                crearHecho(S1),!.
+
+sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1),
+                                adjetivo(Numero, Genero,S1,S),
+                                crearHecho(S1),!.
+
+sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S),
+                                crearHecho(S0),!.
+
+sintagma_nominal(Numero,S0,S):- adjetivo(Numero,_,S0,S),
+                                crearHecho(S0),!.
+
+sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
+                                sustantivo(Numero,Genero,S1,S2),
+                                adjetivo(Numero,Genero,S2,S),
+                                crearHecho(S2),!.
+
+sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
+                                sustantivo(Numero,Genero,S1,S2),
+                                adjetivo(Numero,Genero,S2,S3),
+                                crearHecho(S3),
+                                conjuncion(S3,S4),
+                                adjetivo(Numero,Genero,S4,S),
+                                crearHecho(S4),!.
+
+sintagma_nominal(_,S0,S):- preposicion(S0,S1),
+                           determinante(Numero,Genero,_,S1,S2),
+                           sustantivo(Numero,Genero,S2,S),
+                           crearHecho(S2),!.
+
+sintagma_nominal(_,S0,S):- preposicion(S0,S1),
+                           determinante(Numero,Genero,_,S1,S2),
+                           sustantivo(Numero,Genero,S2,S3),
+                           adjetivo(Numero,Genero,S3,S),
+                           crearHecho(S3),!.
+
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
+                                sustantivo(Numero,Genero,S1,S2),
+                                crearHecho(S2),
+                                sintagma_nominal(Numero,S2,S),!.
+
+sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
+                                sustantivo(Numero,Genero,S1,S2),
+                                adjetivo(Numero, Genero,S2,S3),
+                                crearHecho(S3),
+                                conjuncion(S3,S4),
+                                adjetivo(Numero, Genero,S4,S),
+                                crearHecho(S4),!.
+
+sintagma_nominal(_,S0,S):- preposicion(S0,S1),
+                           adjetivo(_,_,S1,S),
+                           crearHecho(S1),!.
 
 
-sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1), verbo(Numero,Persona,S1,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1), verbo(Numero,Persona,S1,S2),sintagma_nominal(_,S2,S),!.
+sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1),
+                                       verbo(Numero,Persona,S1,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1),
+                                       verbo(Numero,Persona,S1,S2),
+                                       sintagma_nominal(_,S2,S),!.
+
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S),!.
-sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(Numero,S1,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S),!.
+
+sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1),
+                                       sintagma_nominal(Numero,S1,S),!.
 
 
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),verbo(Numero,Persona,S3,S4),sintagma_nominal(Numero,S4,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),verbo(Numero,Persona,S3,S4), sintagma_nominal(Numero,S4,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S),!.
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),verbo(Numero,Persona,S3,S4),sintagma_nominal(Numero,S4,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),determinante(Numero,Genero,Persona,S3,S4), sujeto(Numero,Genero ,Persona,S4,S5), verbo(Numero,Persona,S5,S6),sintagma_nominal(Numero,S6,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sujeto(Numero,_,Persona,S3,S4), verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),pronombre(Numero,_,Persona,S3,S4),verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),verbo(Numero,Persona,S3,S4), sintagma_nominal(Numero,S4,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S).
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       verbo(Numero,Persona,S3,S4),
+                                       sintagma_nominal(Numero,S4,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       disyuncion(S2,S3),
+                                       verbo(Numero,Persona,S3,S4),
+                                       sintagma_nominal(Numero,S4,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       sintagma_nominal(Numero,S3,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       disyuncion(S2,S3),
+                                       sintagma_nominal(Numero,S3,S),!.
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       verbo(Numero,Persona,S3,S4),
+                                       sintagma_nominal(Numero,S4,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       determinante(Numero,Genero,Persona,S3,S4),
+                                       sujeto(Numero,Genero ,Persona,S4,S5),
+                                       verbo(Numero,Persona,S5,S6),
+                                       sintagma_nominal(Numero,S6,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       sujeto(Numero,_,Persona,S3,S4),
+                                       verbo(Numero,Persona,S4,S5),
+                                       sintagma_nominal(Numero,S5,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       pronombre(Numero,_,Persona,S3,S4),
+                                       verbo(Numero,Persona,S4,S5),
+                                       sintagma_nominal(Numero,S5,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       disyuncion(S2,S3),
+                                       verbo(Numero,Persona,S3,S4),
+                                       sintagma_nominal(Numero,S4,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       conjuncion(S2,S3),
+                                       sintagma_nominal(Numero,S3,S).
+
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
+                                       sintagma_nominal(Numero,S1,S2),
+                                       disyuncion(S2,S3),
+                                       sintagma_nominal(Numero,S3,S).
 
 
 analizaGramatica(Oracion) :- oracion(Oracion,[]),!.
@@ -87,7 +197,7 @@ insertarFinal(X,[ ],[X]).
 insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
 
 akiTicoLog:-pregunta1.
-pregunta1:-limpiarHechos,write("�Su personaje es hombre o mujer?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta2.
+pregunta1:-limpiarHechos,write("�Su personaje es hombre o mujer?"),nl,read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta2.
 
 pregunta2:-write("�A que se dedica su personaje?"),read(X),separarString(X,Lista),oracion(Lista,[]),findall(C, valorRecibido(C), LC),pregunta3.
 
