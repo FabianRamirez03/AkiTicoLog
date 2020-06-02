@@ -126,8 +126,6 @@ famoso([[nombre, "Edgar Silva"], [pelo, "negro"], [categoria, "espectaculo"], [p
 famoso([[nombre, "Mauricio Hoffman"], [pelo, "macho"], [categoria, "espectaculo"], [profesion, "presentador"]]).
 famoso("Carlos Alvarado").
 famoso("Paquita",[alajuela,1960,mujer,deportes,rubia,1.70]).
-famoso("Paquito",[alajuela,1960,hombre,deportes,rubio,1.70]).
-
 
 politico("Carlos Alvarado").
 presidente("Carlos Alvarado").
