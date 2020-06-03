@@ -39,16 +39,14 @@ sustantivo(singular, femenino,["ropa"|S],S).
 sustantivo(singular, masculino,["pelo"|S],S).
 sustantivo(singular, femenino,["mujer"|S],S).
 sustantivo(singular,masculino,["personaje"|S],S).
-sustantivo(plural,masculino,["deportes"|S],S).
-sustantivo(singular, masculino,["presidente"|S],S).
-sustantivo(singular, femenino,["presidenta"|S],S).
-sustantivo(singular, masculino,["boxeador"|S],S).
-sustantivo(singular, femenino,["boxeadora"|S],S).
-sustantivo(singular, masculino,["cientifico"|S],S).
-sustantivo(singular, femenino,["politica"|S],S).
-sustantivo(singular, masculino,["politico"|S],S).
-sustantivo(singular, masculino,["cientifica"|S],S).
 sustantivo(singular, masuclino,["cabello"|S],S).
+sustantivo(singular, femenino,["alta"|S],S).
+sustantivo(singular, masculino,["alto"|S],S).
+sustantivo(singular, _,["en"|S],S).
+sustantivo(singular, _,["pelo"|S],S).
+
+%Generos
+
 sustantivo(singular, femenino,["mujer"|S],S).
 sustantivo(singular, femenino,["Mujer"|S],S).
 sustantivo(singular, femenino,["dama"|S],S).
@@ -58,17 +56,107 @@ sustantivo(singular, masculino,["Hombre"|S],S).
 sustantivo(singular, masculino,["varon"|S],S).
 sustantivo(singular, masculino,["Varon"|S],S).
 sustantivo(singular, masculino,["masculino"|S],S).
-sustantivo(singular, femenino,["alta"|S],S).
-sustantivo(singular, masculino,["alto"|S],S).
-sustantivo(singular, femenino,["presentadora"|S],S).
-sustantivo(singular, masculino,["presentador"|S],S).
-sustantivo(singular, _,["40"|S],S).
-sustantivo(singular, _,["59"|S],S).
-sustantivo(singular, _,["72"|S],S).
-sustantivo(singular, _,["36"|S],S).
-sustantivo(singular, _,["en"|S],S).
-sustantivo(singular, _,["pelo"|S],S).
 
+
+
+%Profesiones______________________________
+
+%Politicos
+sustantivo(singular, masculino,["presidente"|S],S).
+sustantivo(singular, masculino,["politico"|S],S).
+sustantivo(singular, masculino,["diputado"|S],S).
+sustantivo(singular, masculino,["ministro"|S],S).
+sustantivo(singular, masculino,["rey"|S],S).
+sustantivo(singular, masculino,["politico"|S],S).
+
+sustantivo(singular, femenino,["presidenta"|S],S).
+sustantivo(singular, femenino,["politica"|S],S).
+sustantivo(singular, femenino,["diputada"|S],S).
+sustantivo(singular, femenino,["ministra"|S],S).
+sustantivo(singular, femenino,["reina"|S],S).
+sustantivo(singular, femenino,["politica"|S],S).
+
+%Deportes
+sustantivo(plural,masculino,["deportes"|S],S).
+sustantivo(singular, masculino,["boxeador"|S],S).
+sustantivo(singular, masculino,["futbolista"|S],S).
+sustantivo(singular, masculino,["basketbolista"|S],S).
+sustantivo(singular, masculino,["golfista"|S],S).
+
+
+sustantivo(singular, femenino,["boxeadora"|S],S).
+sustantivo(singular, femenino,["futbolista"|S],S).
+sustantivo(singular, femenino,["basketbolista"|S],S).
+sustantivo(singular, femenino,["golfista"|S],S).
+
+%Ciencia
+sustantivo(singular, masculino,["cientifico"|S],S).
+
+sustantivo(singular, masculino,["cientifica"|S],S).
+
+%Espectaculo
+sustantivo(singular, femenino,["presentadora"|S],S).
+
+sustantivo(singular, masculino,["presentador"|S],S).
+
+%Numeros
+sustantivo(singular, _,["0"|S],S).
+sustantivo(singular, _,["1"|S],S).
+sustantivo(singular, _,["2"|S],S).
+sustantivo(singular, _,["3"|S],S).
+sustantivo(singular, _,["4"|S],S).
+sustantivo(singular, _,["5"|S],S).
+sustantivo(singular, _,["6"|S],S).
+sustantivo(singular, _,["7"|S],S).
+sustantivo(singular, _,["8"|S],S).
+sustantivo(singular, _,["9"|S],S).
+sustantivo(singular, _,["10"|S],S).
+sustantivo(singular, _,["11"|S],S).
+sustantivo(singular, _,["12"|S],S).
+sustantivo(singular, _,["13"|S],S).
+sustantivo(singular, _,["14"|S],S).
+sustantivo(singular, _,["15"|S],S).
+sustantivo(singular, _,["16"|S],S).
+sustantivo(singular, _,["17"|S],S).
+sustantivo(singular, _,["18"|S],S).
+sustantivo(singular, _,["19"|S],S).
+sustantivo(singular, _,["20"|S],S).
+sustantivo(singular, _,["21"|S],S).
+sustantivo(singular, _,["22"|S],S).
+sustantivo(singular, _,["23"|S],S).
+sustantivo(singular, _,["24"|S],S).
+sustantivo(singular, _,["25"|S],S).
+sustantivo(singular, _,["26"|S],S).
+sustantivo(singular, _,["27"|S],S).
+sustantivo(singular, _,["28"|S],S).
+sustantivo(singular, _,["29"|S],S).
+sustantivo(singular, _,["30"|S],S).
+sustantivo(singular, _,["31"|S],S).
+sustantivo(singular, _,["32"|S],S).
+sustantivo(singular, _,["33"|S],S).
+sustantivo(singular, _,["34"|S],S).
+sustantivo(singular, _,["35"|S],S).
+sustantivo(singular, _,["36"|S],S).
+sustantivo(singular, _,["37"|S],S).
+sustantivo(singular, _,["38"|S],S).
+sustantivo(singular, _,["39"|S],S).
+sustantivo(singular, _,["40"|S],S).
+sustantivo(singular, _,["41"|S],S).
+sustantivo(singular, _,["42"|S],S).
+sustantivo(singular, _,["43"|S],S).
+sustantivo(singular, _,["44"|S],S).
+sustantivo(singular, _,["45"|S],S).
+sustantivo(singular, _,["46"|S],S).
+sustantivo(singular, _,["47"|S],S).
+sustantivo(singular, _,["48"|S],S).
+sustantivo(singular, _,["49"|S],S).
+sustantivo(singular, _,["50"|S],S).
+sustantivo(singular, _,["51"|S],S).
+sustantivo(singular, _,["52"|S],S).
+sustantivo(singular, _,["53"|S],S).
+sustantivo(singular, _,["54"|S],S).
+sustantivo(singular, _,["55"|S],S).
+sustantivo(singular, _,["56"|S],S).
 
 %Adjetivos
 adjetivo(plural,femenino,["pintadas"|S],S).
@@ -206,47 +294,111 @@ verbo(singular,tercera,["mide"|S],S).
 %Respuestas
 respuesta(["Si"|S],S).
 respuesta(["No"|S],S).
+respuesta(["si"|S],S).
+respuesta(["no"|S],S).
 
 
 
-famoso("Carlos Alvarado",["hombre","negro","presidente","Alajuela","40"]).
-famoso("Agustin",["hombre","negro","estudiante","Puntarenas","19"]).
-famoso("Fabian",["hombre","negro","estudiante","Heredia","19"]).
-famoso("Abigail",["mujer","negro","estudiante","Alajuela","20"]).
+famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
+famoso("Agustin",["hombre","negro","estudiante","puntarenas","19"]).
+famoso("Fabian",["hombre","negro","estudiante","heredia","19"]).
+famoso("Abigail",["mujer","negro","estudiante","alajuela","20"]).
 
 
 
-%Listas de posibles respuestas
+%Listas de posibles respuestas, sinonimo
 
+
+%Por genero
+listaGenero(["mujer","Mujer", "dama","Dama", "femenina"]).
+listaGenero(["hombre","Hombre","varon","Varon","masculino"]).
+
+%Por color de pelo
 listaPelo(["rubio","rubia","macho","macha"]).
-listaPelo(["negro"]).
+listaPelo(["negro", "oscuro"]).
 listaPelo(["cafe", "castaño"]).
 
-listaLugares(["sanjose", "San Jose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
+%Por oficio
+listaOficio(["presidente"]).
+listaOficio(["presidenta"]).
+listaOficio(["diputado"]).
+listaOficio(["diputada"]).
+
+
+listaLugares(["San Jose", "Jose", "jose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
 listaLugares(["alajuela", "Alajuela"]).
 listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
 listaLugares(["heredia", "Heredia"]).
 listaLugares(["puntarenas", "Puntarenas"]).
-listaLugares(["guanacaste", "Guanacaste"]).
+listaLugares(["guanacaste", "Guanacaste", "guana", "Guana"]).
 
 
-listaAños(["1960"]).
-listaAños(["1961"]).
-listaAños(["1962"]).
-listaAños(["1963"]).
-listaAños(["1964"]).
-listaAños(["1965"]).
-listaAños(["1966"]).
-listaAños(["1967"]).
-listaAños(["1968"]).
-listaAños(["1969"]).
+listaAños(["60","1960"]).
+listaAños(["59","1961"]).
+listaAños(["58","1962"]).
+listaAños(["57","1963"]).
+listaAños(["56","1964"]).
+listaAños(["55","1965"]).
+listaAños(["54","1966"]).
+listaAños(["53","1967"]).
+listaAños(["52","1968"]).
+listaAños(["51","1969"]).
+listaAños(["50","1970"]).
+listaAños(["49","1971"]).
+listaAños(["48","1972"]).
+listaAños(["47","1973"]).
+listaAños(["46","1974"]).
+listaAños(["45","1975"]).
+listaAños(["44","1976"]).
+listaAños(["43","1977"]).
+listaAños(["42","1978"]).
+listaAños(["41","1979"]).
+listaAños(["40","1980"]).
+listaAños(["39","1981"]).
+listaAños(["38","1982"]).
+listaAños(["37","1983"]).
+listaAños(["36","1984"]).
+listaAños(["35","1985"]).
+listaAños(["34","1986"]).
+listaAños(["33","1987"]).
+listaAños(["32","1988"]).
+listaAños(["31","1989"]).
+listaAños(["30","1990"]).
+listaAños(["29","1991"]).
+listaAños(["28","1992"]).
+listaAños(["27","1993"]).
+listaAños(["26","1994"]).
+listaAños(["25","1995"]).
+listaAños(["24","1996"]).
+listaAños(["23","1997"]).
+listaAños(["22","1998"]).
+listaAños(["21","1999"]).
+listaAños(["20","2000"]).
+listaAños(["19","2001"]).
+listaAños(["18","2002"]).
+listaAños(["17","2003"]).
+listaAños(["16","2004"]).
+listaAños(["15","2005"]).
+listaAños(["14","2006"]).
+listaAños(["13","2007"]).
+listaAños(["12","2008"]).
+listaAños(["11","2009"]).
+listaAños(["10","2010"]).
+listaAños(["9","2011"]).
+listaAños(["8","2012"]).
+listaAños(["7","2013"]).
+listaAños(["6","2014"]).
+listaAños(["5","2015"]).
+listaAños(["4","2016"]).
+listaAños(["3","2017"]).
+listaAños(["2","2018"]).
+listaAños(["1","2019"]).
+listaAños(["0","2020"]).
 
-listaGenero(["mujer","Mujer", "dama","Dama", "femenina"]).
-listaGenero(["hombre","Hombre","varon", "Varon", "masculino"]).
 
-listaOficio(["deportes"]).
 
-listaAltura(["1.70"]).
+
+
 
 
 

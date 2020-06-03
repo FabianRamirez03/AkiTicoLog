@@ -33,10 +33,19 @@ sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nom
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S).
 sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S).
 
-
+% Analiza la oracion, si es correcta realiza un corte, si no, se le
+% indica al usuario que es incorrecto.
 analizaGramatica(Oracion) :- oracion(Oracion,[]),!.
 analizaGramatica(_) :- writeln("La oracion ingresada no es reconocida"),nl.
 
+
+%Revisa una lista de una especie de sinonimos para ser mas flexible
+%La cabeza de esa lista es el identificador universal
+revisaLista(Head,Atributo):-listaGenero(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,Atributo):-listaPelo(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,Atributo):-listaOficio(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,Atributo):-listaLugares(Lista), Lista = [Head|_], miembro(Atributo,Lista).
+revisaLista(Head,Atributo):-listaAños(Lista), Lista = [Head|_], miembro(Atributo,Lista).
 
 
 %Operaciones Bï¿½sicas
@@ -101,16 +110,21 @@ inicio() :-
     read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
     separarString(Oracion5,E), analizaGramatica(E),
 
-    hecho(A,V),hecho(B,W),hecho(C,X),hecho(D,Y),hecho(E,Z),
+    hecho(A,V), revisaLista(H0, V),
+    hecho(B,W), revisaLista(H1, W),
+    hecho(C,X), revisaLista(H2, X),
+    hecho(D,Y), revisaLista(H3, Y),
+    hecho(E,Z), revisaLista(H4, Z),
+
 
     identificacion(
         Nombre,
-        V,
-        W,
-        X,
-        Y,
-        Z
-    ), writeln("Su personaje es: "), writeln(Nombre).
+        H0,
+        H1,
+        H2,
+        H3,
+        H4
+    ), writeln("Su personaje es: "), writeln(Nombre), nl.
 
 
 identificacion(Nombre,H1,H2,H3,H4,H5) :-
@@ -118,7 +132,7 @@ identificacion(Nombre,H1,H2,H3,H4,H5) :-
     miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
 
 
-inicio().
+
 
 
 
