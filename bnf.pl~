@@ -33,11 +33,11 @@ sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nom
 
 
 analizaGramatica(Oracion) :- oracion(Oracion,[]),!.
-analizaGramatica(_) :- writeln("La oración ingresada no es reconocida"),nl.
+analizaGramatica(_) :- writeln("La oracion ingresada no es reconocida"),nl.
 
 
 
-%Operaciones Básicas
+%Operaciones Bï¿½sicas
 
 separarString(String, Lista):-split_string(String," ", "", Lista).
 
@@ -59,11 +59,16 @@ analizaTiene(String, Respuesta):-separarString(String, Lista), sintagma_nominal(
 
 
 lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su personaje?",
-       "Su personaje es alto?","Cual es la profesión de su personaje?",
-       "En qué provincia vive su personaje?","Qué edad tiene su personaje?"]).
+       "Su personaje es alto?","Cual es la profesiï¿½n de su personaje?",
+       "En quï¿½ provincia vive su personaje?","Quï¿½ edad tiene su personaje?"]).
 
 insertarFinal(X,[ ],[X]).
 insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
+
+hecho([Y], Y).
+
+hecho([_|Xs], Y):-
+          hecho(Xs, Y).
 
 mostrar(L,[]) :- mostrarLista([L|_]).
 mostrarLista([L|R]) :-  writeln(L), mostrar([R|_],[]).
@@ -82,18 +87,33 @@ inicio() :-
     read(Oracion2), nl, %insertarFinal(L,[Oracion2],L),
     separarString(Oracion2, B), analizaGramatica(B),
 
-    writeln("A qué se dedica su personaje?"), nl,
-    read(Oracion3), nl, %insertarFinal(L,[Oracion4],L),
+    writeln("A que se dedica su personaje?"), nl,
+    read(Oracion3), nl, %insertarFinal(L,[Oracion3],L),
     separarString(Oracion3,C), analizaGramatica(C),
 
-    writeln("En qué provincia vive?"), nl,
-    read(Oracion4), nl, %insertarFinal(L,[Oracion5],L),
+    writeln("En que provincia vive?"), nl,
+    read(Oracion4), nl, %insertarFinal(L,[Oracion4],L),
     separarString(Oracion4,D), analizaGramatica(D),
 
-    writeln("Qué edad tiene?"), nl,
-    read(Oracion5), nl, %insertarFinal(L,[Oracion6],L),
-    separarString(Oracion5,E), analizaGramatica(E).
+    writeln("Que edad tiene?"), nl,
+    read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
+    separarString(Oracion5,E), analizaGramatica(E),
 
+    hecho(A,V),hecho(B,W),hecho(C,X),hecho(D,Y),hecho(E,Z),
+
+    identificacion(
+        Nombre,
+        V,
+        W,
+        X,
+        Y,
+        Z
+    ), writeln("Su personaje es: "), writeln(Nombre).
+
+
+identificacion(Nombre,H1,H2,H3,H4,H5) :-
+    famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),
+    miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
 
 
 

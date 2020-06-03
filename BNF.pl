@@ -116,7 +116,7 @@ identificacion(Nombre,H1,H2,H3,H4,H5) :-
     miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
 
 
-
+inicio().
 
 
 
