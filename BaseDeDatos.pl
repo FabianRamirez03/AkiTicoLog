@@ -19,7 +19,7 @@ sujeto(singular,masculino,_,["sujeto"|S],S).
 %Conjunciones
 conjuncion(["y"|S],S).
 
-%Negación
+%Negaciï¿½n
 negacion(["no"|S],S).
 
 %Disyuncion
@@ -42,6 +42,7 @@ sustantivo(singular, masculino,["cientifica"|S],S).
 sustantivo(singular, masuclino,["cabello"|S],S).
 sustantivo(singular, femenino,["mujer"|S],S).
 sustantivo(singular, masculino,["hombre"|S],S).
+sustantivo(singular, _,["estudiante"|S],S).
 sustantivo(singular, femenino,["alta"|S],S).
 sustantivo(singular, masculino,["alto"|S],S).
 sustantivo(singular, femenino,["presentadora"|S],S).
@@ -50,6 +51,10 @@ sustantivo(singular, _,["40"|S],S).
 sustantivo(singular, _,["59"|S],S).
 sustantivo(singular, _,["72"|S],S).
 sustantivo(singular, _,["36"|S],S).
+sustantivo(singular, _,["20"|S],S).
+sustantivo(singular, _,["19"|S],S).
+sustantivo(singular, _,["45"|S],S).
+sustantivo(singular, _,["50"|S],S).
 sustantivo(singular, _,["en"|S],S).
 sustantivo(singular, _,["pelo"|S],S).
 
@@ -91,14 +96,11 @@ respuesta(["No"|S],S).
 
 
 
-famoso([[nombre, "Carlos Alvarado"], [sexo, "hombre"], [pelo, "negro"], [dedicacion, "presidente"],[vive, "San Jose"],[edad, "40"]]).
-famoso([[nombre, "Oscar Arias"], [sexo, "hombre"], [pelo, "blanco"], [dedicacion, "politico"],[vive, "San Jose"],[edad, "79"]]).
-famoso([[nombre, "Edgar Silva"], [sexo, "hombre"], [pelo, "negro"], [dedicacion, "presentador"],[vive, "San Jose"],[edad, "52"]]).
-famoso([[nombre, "Mauricio Hoffman"], [sexo,"hombre"], [pelo, "rubio"], [dedicacion, "presentador"],[vive,"San Jose"],[edad, "36"]]).
-famoso("Carlos Alvarado").
+famoso("Carlos Alvarado",["hombre","negro","presidente","Alajuela","40"]).
+famoso("Agustin",["hombre","negro","estudiante","Puntarenas","19"]).
+famoso("Fabian",["hombre","negro","estudiante","Heredia","19"]).
+famoso("Abigail",["mujer","negro","estudiante","Alajuela","20"]).
 
-politico("Carlos Alvarado").
-presidente("Carlos Alvarado").
 
 
 
