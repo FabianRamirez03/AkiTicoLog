@@ -80,19 +80,30 @@ sustantivo(singular, femenino,["politica"|S],S).
 sustantivo(plural,masculino,["deportes"|S],S).
 sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, masculino,["futbolista"|S],S).
+sustantivo(singular, masculino,["portero"|S],S).
+sustantivo(singular, masculino,["defensa"|S],S).
+sustantivo(singular, masculino,["medio"|S],S).
+sustantivo(singular, masculino,["mediocampista"|S],S).
+sustantivo(singular, masculino,["delantero"|S],S).
 sustantivo(singular, masculino,["basketbolista"|S],S).
 sustantivo(singular, masculino,["golfista"|S],S).
-
-
 sustantivo(singular, femenino,["boxeadora"|S],S).
 sustantivo(singular, femenino,["futbolista"|S],S).
+sustantivo(singular, femenino,["portera"|S],S).
+sustantivo(singular, femenino,["defensa"|S],S).
+sustantivo(singular, femenino,["media"|S],S).
+sustantivo(singular, femenino,["mediocampista"|S],S).
+sustantivo(singular, femenino,["delantera"|S],S).
 sustantivo(singular, femenino,["basketbolista"|S],S).
 sustantivo(singular, femenino,["golfista"|S],S).
 
 %Ciencia
 sustantivo(singular, masculino,["cientifico"|S],S).
+sustantivo(singular, masculino,["astronauta"|S],S).
 
-sustantivo(singular, masculino,["cientifica"|S],S).
+sustantivo(singular, femenino,["cientifica"|S],S).
+sustantivo(singular, femenino,["astronauta"|S],S).
+
 
 %Espectaculo
 sustantivo(singular, femenino,["presentadora"|S],S).
@@ -298,8 +309,25 @@ respuesta(["si"|S],S).
 respuesta(["no"|S],S).
 
 
+%Famosos_________________________________________
 
+
+%Politicos
 famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
+famoso("Laura Chinchilla",["mujer","cafe","presidente","San Jose","61"]).
+
+%Deportes
+famoso("Keylor Navas", ["hombre", "negro", "futbolista","San Jose", "33"]).
+famoso("Shirley Cruz", ["mujer", "negro", "futbolista","San Jose", "34"]).
+
+%Farandula
+famoso("Edgar Silva", ["hombre", "negro", "presentador", "guanacaste", "52"]).
+famoso("Nancy Dobles", ["mujer", "negro", "presentador", "San Jose", "42"]).
+
+%Otros
+famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]).
+
+
 famoso("Agustin",["hombre","negro","estudiante","puntarenas","19"]).
 famoso("Fabian",["hombre","negro","estudiante","heredia","19"]).
 famoso("Abigail",["mujer","negro","estudiante","alajuela","20"]).
@@ -318,11 +346,19 @@ listaPelo(["rubio","rubia","macho","macha"]).
 listaPelo(["negro", "oscuro"]).
 listaPelo(["cafe", "castaño"]).
 
-%Por oficio
-listaOficio(["presidente"]).
-listaOficio(["presidenta"]).
-listaOficio(["diputado"]).
-listaOficio(["diputada"]).
+%Por oficio__________________________
+
+%Politicas
+listaOficio(["presidente", "presidenta"]).
+listaOficio(["diputado","diputada"]).
+%Deportes
+listaOficio(["futbolista", "portero", "delantero", "defensa", "medio", "mediocampista"]).
+
+%Farandula
+listaOficio(["presentador", "presentadora"]).
+
+%Otros
+listaOficio(["astronauta"]).
 
 
 listaLugares(["San Jose", "Jose", "jose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
@@ -331,6 +367,8 @@ listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
 listaLugares(["heredia", "Heredia"]).
 listaLugares(["puntarenas", "Puntarenas"]).
 listaLugares(["guanacaste", "Guanacaste", "guana", "Guana"]).
+listaLugares(["limon", "Limon"]).
+
 
 
 listaAños(["60","1960"]).
