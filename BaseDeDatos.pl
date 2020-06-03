@@ -298,8 +298,25 @@ respuesta(["si"|S],S).
 respuesta(["no"|S],S).
 
 
+%Famosos_________________________________________
 
+
+%Politicos
 famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
+famoso("Laura Chinchilla",["mujer","cafe","presidente","San Jose","61"]).
+
+%Deportes
+famoso("Keylor Navas", ["hombre", "negro", "futbolista","San Jose", "33"]).
+famoso("Shirley Cruz", ["mujer", "negro", "futbolista","San Jose", "34"]).
+
+%Farandula
+famoso("Edgar Silva", ["hombre", "negro", "presentador", "guanacaste", "52"]).
+famoso("Nancy Dobles", ["mujer", "negro", "presentador", "San Jose", "42"]).
+
+%Otros
+famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]).
+
+
 famoso("Agustin",["hombre","negro","estudiante","puntarenas","19"]).
 famoso("Fabian",["hombre","negro","estudiante","heredia","19"]).
 famoso("Abigail",["mujer","negro","estudiante","alajuela","20"]).
@@ -331,6 +348,8 @@ listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
 listaLugares(["heredia", "Heredia"]).
 listaLugares(["puntarenas", "Puntarenas"]).
 listaLugares(["guanacaste", "Guanacaste", "guana", "Guana"]).
+listaLugares(["limon", "Limon"]).
+
 
 
 listaAños(["60","1960"]).
