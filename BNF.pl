@@ -1,18 +1,4 @@
 :- [basededatos].
-:- dynamic (valorRecibido/1).
-
-crearHecho([Valor|_]):-atom_length(Valor,X),(X > 3 ->  asserta(valorRecibido(Valor))).
-limpiarHechos:- retractall(valorRecibido(_)).
-
-revisaLista(Head,S):-S = [Atributo|_],listaPelo(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-revisaLista(Head,S):-S = [Atributo|_],listaLugares(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-revisaLista(Head,S):-S = [Atributo|_],listaAños(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-revisaLista(Head,S):-S = [Atributo|_],listaGenero(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-revisaLista(Head,S):-S = [Atributo|_],listaOficio(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-revisaLista(Head,S):-S = [Atributo|_],listaAltura(Lista), Lista = [Head|_], miembro(Atributo,Lista).
-
-
-
 
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero,Persona,S1,S).
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), negacion(S1,S2), sintagma_verbal(Numero,Persona,S2,S).
@@ -24,168 +10,30 @@ oracion(S0, S):- respuesta(S0,S).
 sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sujeto(Numero,Genero,Persona,S1,S).
 sintagma_nominal(Numero,primera,S0,S):- sujeto(Numero,_,primera,S0,S).
 sintagma_nominal(Numero,Persona,S0,S):- pronombre(Numero,_,Persona,S0,S).
-sintagma_nominal(Numero,Persona,S0,S):- sujeto(Numero,_,Persona,S0,S).
 
 %SN utilizado en el SV
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
-                                sustantivo(Numero,Genero,S1,S2),
-                                adjetivo(Numero,Genero,S2,S),
-                                revisaLista(Head, S2),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
-                                sustantivo(Numero,Genero,S1,S),
-                                revisaLista(Head, S1),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1),
-                                adjetivo(Numero, Genero,S1,S),
-                                revisaLista(Head, S1),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S),
-                                revisaLista(Head, S0),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- adjetivo(Numero,_,S0,S),
-                                revisaLista(Head, S0),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
-                                sustantivo(Numero,Genero,S1,S2),
-                                adjetivo(Numero,Genero,S2,S),
-                                revisaLista(Head, S2),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
-                                sustantivo(Numero,Genero,S1,S2),
-                                adjetivo(Numero,Genero,S2,S3),
-                                crearHecho(S3),
-                                conjuncion(S3,S4),
-                                adjetivo(Numero,Genero,S4,S),
-                                revisaLista(Head, S4),
-                                crearHecho([Head|_]),!.
-
-sintagma_nominal(_,S0,S):- preposicion(S0,S1),
-                           determinante(Numero,Genero,_,S1,S2),
-                           sustantivo(Numero,Genero,S2,S),
-                           revisaLista(Head, S2),
-                           crearHecho([Head|_]),!.
-
-sintagma_nominal(_,S0,S):- preposicion(S0,S1),
-                           determinante(Numero,Genero,_,S1,S2),
-                           sustantivo(Numero,Genero,S2,S3),
-                           adjetivo(Numero,Genero,S3,S),
-                           revisaLista(Head, S3),
-                           crearHecho([Head|_]),!.
-
-sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1),
-                                sustantivo(Numero,Genero,S1,S2),
-                                revisaLista(Head, S2),
-                                crearHecho([Head|_]),
-                                sintagma_nominal(Numero,S2,S),!.
-
-sintagma_nominal(Numero,S0,S):- preposicion(S0,S1),
-                                sustantivo(Numero,Genero,S1,S2),
-                                adjetivo(Numero, Genero,S2,S3),
-                                revisaLista(Head1, S3),
-                                crearHecho([Head1|_]),
-                                conjuncion(S3,S4),
-                                adjetivo(Numero, Genero,S4,S),
-                                revisaLista(Head2, S4),
-                                crearHecho([Head2|_]),!.
-
-sintagma_nominal(_,S0,S):- preposicion(S0,S1),
-                           adjetivo(_,_,S1,S),
-                           revisaLista(Head, S1),
-                           crearHecho([Head|_]),!.
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S).
+sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S).
+sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1), adjetivo(Numero, Genero,S1,S).
+sintagma_nominal(Numero,S0,S):- sustantivo(Numero,_,S0,S).
 
 
-sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1),
-                                       verbo(Numero,Persona,S1,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- pronombre_reflexivo(S0,S1),
-                                       verbo(Numero,Persona,S1,S2),
-                                       sintagma_nominal(_,S2,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S),!.
-
-sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1),
-                                       sintagma_nominal(Numero,S1,S),!.
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S).
+sintagma_verbal(Numero,primera,S0,S):- verbo(Numero,primera,S0,S1), sintagma_nominal(Numero,S1,S).
 
 
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       verbo(Numero,Persona,S3,S4),
-                                       sintagma_nominal(Numero,S4,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       disyuncion(S2,S3),
-                                       verbo(Numero,Persona,S3,S4),
-                                       sintagma_nominal(Numero,S4,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       sintagma_nominal(Numero,S3,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       disyuncion(S2,S3),
-                                       sintagma_nominal(Numero,S3,S),!.
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       verbo(Numero,Persona,S3,S4),
-                                       sintagma_nominal(Numero,S4,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       determinante(Numero,Genero,Persona,S3,S4),
-                                       sujeto(Numero,Genero ,Persona,S4,S5),
-                                       verbo(Numero,Persona,S5,S6),
-                                       sintagma_nominal(Numero,S6,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       sujeto(Numero,_,Persona,S3,S4),
-                                       verbo(Numero,Persona,S4,S5),
-                                       sintagma_nominal(Numero,S5,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       pronombre(Numero,_,Persona,S3,S4),
-                                       verbo(Numero,Persona,S4,S5),
-                                       sintagma_nominal(Numero,S5,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       disyuncion(S2,S3),
-                                       verbo(Numero,Persona,S3,S4),
-                                       sintagma_nominal(Numero,S4,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       conjuncion(S2,S3),
-                                       sintagma_nominal(Numero,S3,S).
-
-sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1),
-                                       sintagma_nominal(Numero,S1,S2),
-                                       disyuncion(S2,S3),
-                                       sintagma_nominal(Numero,S3,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),verbo(Numero,Persona,S3,S4),sintagma_nominal(Numero,S4,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),determinante(Numero,Genero,Persona,S3,S4), sujeto(Numero,Genero ,Persona,S4,S5), verbo(Numero,Persona,S5,S6),sintagma_nominal(Numero,S6,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sujeto(Numero,_,Persona,S3,S4), verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),pronombre(Numero,_,Persona,S3,S4),verbo(Numero,Persona,S4,S5),sintagma_nominal(Numero,S5,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),verbo(Numero,Persona,S3,S4), sintagma_nominal(Numero,S4,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),conjuncion(S2,S3),sintagma_nominal(Numero,S3,S).
+sintagma_verbal(Numero,Persona,S0,S):- verbo(Numero,Persona,S0,S1), sintagma_nominal(Numero,S1,S2),disyuncion(S2,S3),sintagma_nominal(Numero,S3,S).
 
 
 analizaGramatica(Oracion) :- oracion(Oracion,[]),!.
-analizaGramatica(_) :- writeln("La oraciï¿½n ingresada no es reconocida"),nl.
+analizaGramatica(_) :- writeln("La oracion ingresada no es reconocida"),nl.
 
 
 
@@ -210,8 +58,6 @@ analizaTiene(String, Respuesta):-separarString(String, Lista), sintagma_nominal(
 [Verbo|Atributos], Verbo = "tiene", Atributos = [_, Descripcion], getName(Descripcion, Respuesta).
 
 
-analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Atributos = [Descripcion|_],  Verbo = "es", getName(Descripcion, Respuesta).
-analizaEs(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 = [Verbo|Atributos], Verbo = "es", Atributos = [_|Atributo], getName(Atributo, Respuesta).
 lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su personaje?",
        "Su personaje es alto?","Cual es la profesiï¿½n de su personaje?",
        "En quï¿½ provincia vive su personaje?","Quï¿½ edad tiene su personaje?"]).
@@ -219,55 +65,9 @@ lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su pers
 insertarFinal(X,[ ],[X]).
 insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
 
+hecho([Y], Y).
 
-
-akiTicoLog:-pregunta1, pregunta2, pregunta3,  pregunta4,  pregunta5,  respuesta.
-
-pregunta1:-limpiarHechos,
-           write("ï¿½Su personaje es hombre o mujer?"),nl,
-           read(X),
-           separarString(X,Lista),
-           oracion(Lista,[]),
-           findall(C, valorRecibido(C), _).
-           %pregunta2.
-
-pregunta2:-write("ï¿½A que se dedica su personaje?"),nl,
-           read(X),
-           separarString(X,Lista),
-           oracion(Lista,[]),
-           findall(C, valorRecibido(C), _).
-           %pregunta3.
-
-pregunta3:-write("ï¿½Donde naciï¿½ su personaje?"),nl,
-           read(X),
-           separarString(X,Lista),
-           oracion(Lista,[]),
-           findall(C, valorRecibido(C), _).
-           %pregunta4.
-
-
-pregunta4:-write("ï¿½En que aï¿½o naciï¿½ su personaje?"),nl,
-           read(X),
-           separarString(X,Lista),
-           oracion(Lista,[]),
-           findall(C, valorRecibido(C), _).
-           %pregunta5.
-
-pregunta5:-write("ï¿½Cuantï¿½ mide su personaj?"),nl,
-           read(X),
-           separarString(X,Lista),
-           oracion(Lista,[]),
-           findall(C, valorRecibido(C), LC),
-           write(LC),nl.
-           %respuesta.
-
-respuesta:-famoso(X, Personaje), sublista(_, Personaje),write(X).
-
-
-
-sublista([], _).
-sublista([X|L], L2):- miembro(X, L2), sublista(L, L2).
-
+hecho([_|Xs], Y):-hecho(Xs, Y).
 
 mostrar(L,[]) :- mostrarLista([L|_]).
 mostrarLista([L|R]) :-  writeln(L), mostrar([R|_],[]).
@@ -286,14 +86,38 @@ inicio() :-
     read(Oracion2), nl, %insertarFinal(L,[Oracion2],L),
     separarString(Oracion2, B), analizaGramatica(B),
 
-    writeln("A quï¿½ se dedica su personaje?"), nl,
+    writeln("A que se dedica su personaje?"), nl,
     read(Oracion3), nl, %insertarFinal(L,[Oracion3],L),
     separarString(Oracion3,C), analizaGramatica(C),
 
-    writeln("En quï¿½ provincia vive?"), nl,
+    writeln("En que provincia vive?"), nl,
     read(Oracion4), nl, %insertarFinal(L,[Oracion4],L),
     separarString(Oracion4,D), analizaGramatica(D),
 
-    writeln("Quï¿½ edad tiene?"), nl,
+    writeln("Que edad tiene?"), nl,
     read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
-    separarString(Oracion5,E), analizaGramatica(E).
+    separarString(Oracion5,E), analizaGramatica(E),
+
+    hecho(A,V),hecho(B,W),hecho(C,X),hecho(D,Y),hecho(E,Z),
+
+    identificacion(
+        Nombre,
+        V,
+        W,
+        X,
+        Y,
+        Z
+    ), writeln("Su personaje es: "), writeln(Nombre).
+
+
+identificacion(Nombre,H1,H2,H3,H4,H5) :-
+    famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),
+    miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
+
+
+
+
+
+
+
+

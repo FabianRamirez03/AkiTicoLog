@@ -228,21 +228,21 @@ pregunta1:-limpiarHechos,
            read(X),
            separarString(X,Lista),
            oracion(Lista,[]),
-           findall(C, valorRecibido(C), LC).
+           findall(C, valorRecibido(C), _).
            %pregunta2.
 
 pregunta2:-write("�A que se dedica su personaje?"),nl,
            read(X),
            separarString(X,Lista),
            oracion(Lista,[]),
-           findall(C, valorRecibido(C), LC).
+           findall(C, valorRecibido(C), _).
            %pregunta3.
 
 pregunta3:-write("�Donde naci� su personaje?"),nl,
            read(X),
            separarString(X,Lista),
            oracion(Lista,[]),
-           findall(C, valorRecibido(C), LC).
+           findall(C, valorRecibido(C), _).
            %pregunta4.
 
 
@@ -250,7 +250,7 @@ pregunta4:-write("�En que a�o naci� su personaje?"),nl,
            read(X),
            separarString(X,Lista),
            oracion(Lista,[]),
-           findall(C, valorRecibido(C), LC).
+           findall(C, valorRecibido(C), _).
            %pregunta5.
 
 pregunta5:-write("�Cuant� mide su personaj?"),nl,
@@ -261,7 +261,7 @@ pregunta5:-write("�Cuant� mide su personaj?"),nl,
            write(LC),nl.
            %respuesta.
 
-respuesta:-famoso(X, Personaje), sublista(LC, Personaje),write(X).
+respuesta:-famoso(X, Personaje), sublista(_, Personaje),write(X).
 
 
 
