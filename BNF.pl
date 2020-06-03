@@ -1,17 +1,19 @@
 :- [basededatos].
 
+% Verifica las oraciones ingresadas por el usuario que cumplan con la
+% estructura basica del idioma español
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), sintagma_verbal(Numero,Persona,S1,S).
 oracion(S0, S):- sintagma_nominal(Numero,Persona,S0, S1), negacion(S1,S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,S1),sintagma_nominal(Numero,Persona,S1, S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,[","|S1]),sintagma_nominal(Numero,Persona,S1, S2), sintagma_verbal(Numero,Persona,S2,S).
 oracion(S0, S):- respuesta(S0,S).
 
-%SN
+%Sintagma Nominal
 sintagma_nominal(Numero,Persona,S0,S):- determinante(Numero,Genero,Persona,S0,S1), sujeto(Numero,Genero,Persona,S1,S).
 sintagma_nominal(Numero,primera,S0,S):- sujeto(Numero,_,primera,S0,S).
 sintagma_nominal(Numero,Persona,S0,S):- pronombre(Numero,_,Persona,S0,S).
 
-%SN utilizado en el SV
+%Sintagma Nominal utilizado en el SV
 sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S2), adjetivo(Numero,Genero,S2,S).
 sintagma_nominal(Numero,S0,S):- determinante(Numero,Genero,_,S0,S1), sustantivo(Numero,Genero,S1,S).
 sintagma_nominal(Numero,S0,S):- sustantivo(Numero,Genero,S0,S1), adjetivo(Numero, Genero,S1,S).
