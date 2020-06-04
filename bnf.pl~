@@ -110,14 +110,13 @@ inicio() :-
     read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
     separarString(Oracion5,E), analizaGramatica(E),
 
-    hecho(A,V), revisaLista(H0, V),writeln(H0),nl,
-    hecho(B,W), revisaLista(H1, W),writeln(H1),nl,
-    hecho(C,X), revisaLista(H2, X),writeln(H2),nl,
-    hecho(D,Y), revisaLista(H3, Y),writeln(H3),nl,
-    hecho(E,Z), revisaLista(H4, Z),writeln(H4),nl.
+    hecho(A,V), revisaLista(H0, V),
+    hecho(B,W), revisaLista(H1, W),
+    hecho(C,X), revisaLista(H2, X),
+    hecho(D,Y), revisaLista(H3, Y),
+    hecho(E,Z), revisaLista(H4, Z),
 
 
-   /*
     identificacion(
         Nombre,
         H0,
@@ -126,7 +125,7 @@ inicio() :-
         H3,
         H4
     ), writeln("Su personaje es: "), writeln(Nombre), nl.
-*/
+
 
 identificacion(Nombre,H1,H2,H3,H4,H5) :-
     famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),

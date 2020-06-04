@@ -48,33 +48,12 @@ revisaLista(Head,Atributo):-listaLugares(Lista), Lista = [Head|_], miembro(Atrib
 revisaLista(Head,Atributo):-listaAños(Lista), Lista = [Head|_], miembro(Atributo,Lista).
 
 
-%Operaciones Bï¿½sicas
+%Operaciones Basicas
 
 separarString(String, Lista):-split_string(String," ", "", Lista).
 
 miembro(X, [X|_]).
 miembro(X, [_|R]):-miembro(X,R).
-
-
-consulta(Atributo,Descripcion):-famoso(Famoso),consultaAux(Atributo,Descripcion, Famoso).
-consultaDoble(Descripcion1,Descripcion2):-famoso(Famoso), consultaAux(_, Descripcion1, Famoso), consultaAux(_, Descripcion2, Famoso).
-consultaAux(Atributo,Descripcion, Famoso):-miembro([Atributo, Descripcion], Famoso).
-
-
-getName(Descripcion, Nombre):-getNameAux(Descripcion, Nombre).
-getNameAux(Descripcion, Nombre):-famoso(Famoso), consultaAux(_, Descripcion, Famoso), consultaAux(nombre, Nombre, Famoso).
-
-
-analizaTiene(String, Respuesta):-separarString(String, Lista), sintagma_nominal(Numero,Persona,Lista, S1), sintagma_verbal(Numero,Persona,S1,_), S1 =
-[Verbo|Atributos], Verbo = "tiene", Atributos = [_, Descripcion], getName(Descripcion, Respuesta).
-
-
-lista(["Su personaje es hombre o mujer?","Cual es el color de cabello de su personaje?",
-       "Su personaje es alto?","Cual es la profesiï¿½n de su personaje?",
-       "En quï¿½ provincia vive su personaje?","Quï¿½ edad tiene su personaje?"]).
-
-insertarFinal(X,[ ],[X]).
-insertarFinal(X,[H|T],[H|Z]) :- insertarFinal(X,T,Z).
 
 hecho([Y], Y).
 
@@ -84,6 +63,10 @@ hecho([_|Xs], Y):-
 mostrar(L,[]) :- mostrarLista([L|_]).
 mostrarLista([L|R]) :-  writeln(L), mostrar([R|_],[]).
 
+identificacion(Nombre,H1,H2,H3,H4,H5) :-
+    famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),
+    miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
+
 inicio() :-
 
     nl,
@@ -91,23 +74,23 @@ inicio() :-
     nl,
 
     writeln("Su personaje es mujer?"), nl,
-    read(Oracion1), nl, %insertarFinal(L,[Oracion1],L),
+    read(Oracion1), nl,
     separarString(Oracion1, A), analizaGramatica(A),
 
     writeln("El pelo de su personaje es de color negro?"), nl,
-    read(Oracion2), nl, %insertarFinal(L,[Oracion2],L),
+    read(Oracion2), nl,
     separarString(Oracion2, B), analizaGramatica(B),
 
     writeln("A que se dedica su personaje?"), nl,
-    read(Oracion3), nl, %insertarFinal(L,[Oracion3],L),
+    read(Oracion3), nl,
     separarString(Oracion3,C), analizaGramatica(C),
 
     writeln("En que provincia vive?"), nl,
-    read(Oracion4), nl, %insertarFinal(L,[Oracion4],L),
+    read(Oracion4), nl,
     separarString(Oracion4,D), analizaGramatica(D),
 
     writeln("Que edad tiene?"), nl,
-    read(Oracion5), nl, %insertarFinal(L,[Oracion5],L),
+    read(Oracion5), nl,
     separarString(Oracion5,E), analizaGramatica(E),
 
     hecho(A,V), revisaLista(H0, V),
@@ -125,11 +108,6 @@ inicio() :-
         H3,
         H4
     ), writeln("Su personaje es: "), writeln(Nombre), nl.
-
-
-identificacion(Nombre,H1,H2,H3,H4,H5) :-
-    famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),
-    miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
 
 
 

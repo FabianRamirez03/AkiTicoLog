@@ -67,9 +67,16 @@ sustantivo(singular, masculino,["politico"|S],S).
 sustantivo(singular, masculino,["diputado"|S],S).
 sustantivo(singular, masculino,["ministro"|S],S).
 sustantivo(singular, masculino,["rey"|S],S).
+sustantivo(singular, masculino,["actor"|S],S).
 sustantivo(singular, masculino,["politico"|S],S).
 
+sustantivo(singular, _,["cantante"|S],S).
+sustantivo(singular, _,["astronauta"|S],S).
+sustantivo(singular, _,["estudiante"|S],S).
+sustantivo(singular, _,["modelo"|S],S).
+
 sustantivo(singular, femenino,["presidenta"|S],S).
+sustantivo(singular, femenino,["actriz"|S],S).
 sustantivo(singular, femenino,["politica"|S],S).
 sustantivo(singular, femenino,["diputada"|S],S).
 sustantivo(singular, femenino,["ministra"|S],S).
@@ -78,6 +85,7 @@ sustantivo(singular, femenino,["politica"|S],S).
 
 %Deportes
 sustantivo(plural,masculino,["deportes"|S],S).
+sustantivo(singular,masculino,["ministro"|S],S).
 sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, masculino,["futbolista"|S],S).
 sustantivo(singular, masculino,["portero"|S],S).
@@ -168,6 +176,53 @@ sustantivo(singular, _,["53"|S],S).
 sustantivo(singular, _,["54"|S],S).
 sustantivo(singular, _,["55"|S],S).
 sustantivo(singular, _,["56"|S],S).
+sustantivo(singular, _,["57"|S],S).
+sustantivo(singular, _,["58"|S],S).
+sustantivo(singular, _,["59"|S],S).
+sustantivo(singular, _,["60"|S],S).
+sustantivo(singular, _,["61"|S],S).
+sustantivo(singular, _,["62"|S],S).
+sustantivo(singular, _,["63"|S],S).
+sustantivo(singular, _,["64"|S],S).
+sustantivo(singular, _,["65"|S],S).
+sustantivo(singular, _,["66"|S],S).
+sustantivo(singular, _,["67"|S],S).
+sustantivo(singular, _,["68"|S],S).
+sustantivo(singular, _,["69"|S],S).
+sustantivo(singular, _,["70"|S],S).
+sustantivo(singular, _,["71"|S],S).
+sustantivo(singular, _,["72"|S],S).
+sustantivo(singular, _,["73"|S],S).
+sustantivo(singular, _,["74"|S],S).
+sustantivo(singular, _,["75"|S],S).
+sustantivo(singular, _,["76"|S],S).
+sustantivo(singular, _,["77"|S],S).
+sustantivo(singular, _,["78"|S],S).
+sustantivo(singular, _,["79"|S],S).
+sustantivo(singular, _,["80"|S],S).
+sustantivo(singular, _,["81"|S],S).
+sustantivo(singular, _,["82"|S],S).
+sustantivo(singular, _,["83"|S],S).
+sustantivo(singular, _,["84"|S],S).
+sustantivo(singular, _,["85"|S],S).
+sustantivo(singular, _,["86"|S],S).
+sustantivo(singular, _,["87"|S],S).
+sustantivo(singular, _,["88"|S],S).
+sustantivo(singular, _,["89"|S],S).
+sustantivo(singular, _,["90"|S],S).
+sustantivo(singular, _,["91"|S],S).
+sustantivo(singular, _,["92"|S],S).
+sustantivo(singular, _,["93"|S],S).
+sustantivo(singular, _,["94"|S],S).
+sustantivo(singular, _,["95"|S],S).
+sustantivo(singular, _,["96"|S],S).
+sustantivo(singular, _,["97"|S],S).
+sustantivo(singular, _,["98"|S],S).
+sustantivo(singular, _,["99"|S],S).
+
+
+
+
 
 %Adjetivos
 adjetivo(plural,femenino,["pintadas"|S],S).
@@ -184,6 +239,7 @@ adjetivo(singular,masculino,["macho"|S],S).
 adjetivo(singular,femenino,["rubia"|S],S).
 adjetivo(singular,femenino,["macha"|S],S).
 adjetivo(singular, masculino,["blanco"|S],S).
+adjetivo(singular, femenino,["blanca"|S],S).
 
 %Lugares
 adjetivo(singular,_,["alajuela"|S],S).
@@ -194,10 +250,10 @@ adjetivo(singular,_,["Cartago"|S],S).
 adjetivo(singular,_,["cartago"|S],S).
 adjetivo(singular,_,["Cartaguito"|S],S).
 adjetivo(singular,_,["cartaguito"|S],S).
+adjetivo(singular,_,["SanJose"|S],S).
+adjetivo(singular,_,["sanjose"|S],S).
+adjetivo(singular,_,["Sanjose"|S],S).
 adjetivo(singular,_,["San Jose"|S],S).
-adjetivo(singular,_,["san jose"|S],S).
-adjetivo(singular,_,["San jose"|S],S).
-adjetivo(singular,_,["san Jose"|S],S).
 adjetivo(singular,_,["Chepe"|S],S).
 adjetivo(singular,_,["chepe"|S],S).
 adjetivo(singular,_,["Puntarenas"|S],S).
@@ -210,6 +266,26 @@ adjetivo(singular,_,["Limon"|S],S).
 adjetivo(singular,_,["limon"|S],S).
 
 %Años
+adjetivo(singular,_,["1930"|S],S).
+adjetivo(singular,_,["1931"|S],S).
+adjetivo(singular,_,["1932"|S],S).
+adjetivo(singular,_,["1933"|S],S).
+adjetivo(singular,_,["1934"|S],S).
+adjetivo(singular,_,["1935"|S],S).
+adjetivo(singular,_,["1936"|S],S).
+adjetivo(singular,_,["1937"|S],S).
+adjetivo(singular,_,["1938"|S],S).
+adjetivo(singular,_,["1939"|S],S).
+adjetivo(singular,_,["1940"|S],S).
+adjetivo(singular,_,["1941"|S],S).
+adjetivo(singular,_,["1942"|S],S).
+adjetivo(singular,_,["1943"|S],S).
+adjetivo(singular,_,["1944"|S],S).
+adjetivo(singular,_,["1945"|S],S).
+adjetivo(singular,_,["1946"|S],S).
+adjetivo(singular,_,["1947"|S],S).
+adjetivo(singular,_,["1948"|S],S).
+adjetivo(singular,_,["1949"|S],S).
 adjetivo(singular,_,["1950"|S],S).
 adjetivo(singular,_,["1951"|S],S).
 adjetivo(singular,_,["1952"|S],S).
@@ -314,20 +390,30 @@ respuesta(["no"|S],S).
 
 %Politicos
 famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
+famoso("Otto guevara",["hombre","blanco","politico","San Jose","59"]).
+famoso("Guillermo Solis",["hombre","negro","presidente","San Jose","62"]).
 famoso("Laura Chinchilla",["mujer","cafe","presidente","San Jose","61"]).
+famoso("Oscar Arias",["hombre","blanco","presidente","San Jose","79"]). %
+
 
 %Deportes
 famoso("Keylor Navas", ["hombre", "negro", "futbolista","San Jose", "33"]).
+famoso("Joel Campbell", ["hombre", "negro", "futbolista","San Jose", "27"]).
 famoso("Shirley Cruz", ["mujer", "negro", "futbolista","San Jose", "34"]).
 
 %Farandula
+famoso("Maribel Guardia", ["mujer", "negro", "actriz", "San Jose", "61"]).
+famoso("Bali Rodriguez", ["mujer", "cafe", "modelo", "San Jose", "35"]).
+famoso("Harry Shum", ["hombre", "negro", "actor", "limon", "38"]).
 famoso("Edgar Silva", ["hombre", "negro", "presentador", "guanacaste", "52"]).
 famoso("Nancy Dobles", ["mujer", "negro", "presentador", "San Jose", "42"]).
 
 %Otros
-famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]).
+famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]). %
+famoso("Devi Nova", ["mujer", "cafe", "cantante", "San Jose", "39"]).
+famoso("Daniel Salas", ["hombre", "negro", "ministro", "San Jose", "43"]).
 
-
+%Desarrolladores
 famoso("Agustin",["hombre","negro","estudiante","puntarenas","19"]).
 famoso("Fabian",["hombre","negro","estudiante","heredia","19"]).
 famoso("Abigail",["mujer","negro","estudiante","alajuela","20"]).
@@ -344,24 +430,33 @@ listaGenero(["hombre","Hombre","varon","Varon","masculino"]).
 %Por color de pelo
 listaPelo(["rubio","rubia","macho","macha"]).
 listaPelo(["negro", "oscuro"]).
+listaPelo(["blanco"]).
 listaPelo(["cafe", "castaño"]).
 
 %Por oficio__________________________
 
 %Politicas
 listaOficio(["presidente", "presidenta"]).
-listaOficio(["diputado","diputada"]).
+listaOficio(["diputado","diputada","Diputado","Diputada"]).
+listaOficio(["politico","Politico"]).
 %Deportes
 listaOficio(["futbolista", "portero", "delantero", "defensa", "medio", "mediocampista"]).
 
 %Farandula
-listaOficio(["presentador", "presentadora"]).
+listaOficio(["presentador", "presentadora","Presentador","Presentadora"]).
+listaOficio(["actriz","Actriz"]).
+listaOficio(["actor","Actor"]).
+listaOficio(["modelo","Modelo"]).
+listaOficio(["estudiante","Estudiante"]).
+
 
 %Otros
-listaOficio(["astronauta"]).
+listaOficio(["astronauta","Astronauta"]).
+listaOficio(["ministro","Ministro"]).
+listaOficio(["cantante","Cantante"]).
 
 
-listaLugares(["San Jose", "Jose", "jose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
+listaLugares(["San Jose", "Jose", "jose","SanJose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
 listaLugares(["alajuela", "Alajuela"]).
 listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
 listaLugares(["heredia", "Heredia"]).
@@ -371,6 +466,41 @@ listaLugares(["limon", "Limon"]).
 
 
 
+
+
+
+
+
+listaAños(["90","1930"]).
+listaAños(["89","1931"]).
+listaAños(["88","1932"]).
+listaAños(["87","1933"]).
+listaAños(["86","1934"]).
+listaAños(["85","1935"]).
+listaAños(["84","1936"]).
+listaAños(["83","1937"]).
+listaAños(["82","1938"]).
+listaAños(["71","1939"]).
+listaAños(["80","1940"]).
+listaAños(["79","1941"]).
+listaAños(["78","1942"]).
+listaAños(["77","1943"]).
+listaAños(["76","1944"]).
+listaAños(["75","1945"]).
+listaAños(["74","1946"]).
+listaAños(["73","1947"]).
+listaAños(["72","1948"]).
+listaAños(["71","1949"]).
+listaAños(["70","1950"]).
+listaAños(["69","1951"]).
+listaAños(["68","1952"]).
+listaAños(["67","1953"]).
+listaAños(["66","1954"]).
+listaAños(["65","1955"]).
+listaAños(["64","1956"]).
+listaAños(["63","1957"]).
+listaAños(["62","1958"]).
+listaAños(["61","1959"]).
 listaAños(["60","1960"]).
 listaAños(["59","1961"]).
 listaAños(["58","1962"]).

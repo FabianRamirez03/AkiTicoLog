@@ -67,9 +67,16 @@ sustantivo(singular, masculino,["politico"|S],S).
 sustantivo(singular, masculino,["diputado"|S],S).
 sustantivo(singular, masculino,["ministro"|S],S).
 sustantivo(singular, masculino,["rey"|S],S).
+sustantivo(singular, masculino,["actor"|S],S).
 sustantivo(singular, masculino,["politico"|S],S).
 
+sustantivo(singular, _,["cantante"|S],S).
+sustantivo(singular, _,["astronauta"|S],S).
+sustantivo(singular, _,["estudiante"|S],S).
+sustantivo(singular, _,["modelo"|S],S).
+
 sustantivo(singular, femenino,["presidenta"|S],S).
+sustantivo(singular, femenino,["actriz"|S],S).
 sustantivo(singular, femenino,["politica"|S],S).
 sustantivo(singular, femenino,["diputada"|S],S).
 sustantivo(singular, femenino,["ministra"|S],S).
@@ -78,6 +85,7 @@ sustantivo(singular, femenino,["politica"|S],S).
 
 %Deportes
 sustantivo(plural,masculino,["deportes"|S],S).
+sustantivo(singular,masculino,["ministro"|S],S).
 sustantivo(singular, masculino,["boxeador"|S],S).
 sustantivo(singular, masculino,["futbolista"|S],S).
 sustantivo(singular, masculino,["portero"|S],S).
@@ -231,6 +239,7 @@ adjetivo(singular,masculino,["macho"|S],S).
 adjetivo(singular,femenino,["rubia"|S],S).
 adjetivo(singular,femenino,["macha"|S],S).
 adjetivo(singular, masculino,["blanco"|S],S).
+adjetivo(singular, femenino,["blanca"|S],S).
 
 %Lugares
 adjetivo(singular,_,["alajuela"|S],S).
@@ -241,10 +250,10 @@ adjetivo(singular,_,["Cartago"|S],S).
 adjetivo(singular,_,["cartago"|S],S).
 adjetivo(singular,_,["Cartaguito"|S],S).
 adjetivo(singular,_,["cartaguito"|S],S).
+adjetivo(singular,_,["SanJose"|S],S).
+adjetivo(singular,_,["sanjose"|S],S).
+adjetivo(singular,_,["Sanjose"|S],S).
 adjetivo(singular,_,["San Jose"|S],S).
-adjetivo(singular,_,["san jose"|S],S).
-adjetivo(singular,_,["San jose"|S],S).
-adjetivo(singular,_,["san Jose"|S],S).
 adjetivo(singular,_,["Chepe"|S],S).
 adjetivo(singular,_,["chepe"|S],S).
 adjetivo(singular,_,["Puntarenas"|S],S).
@@ -381,20 +390,30 @@ respuesta(["no"|S],S).
 
 %Politicos
 famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
+famoso("Otto guevara",["hombre","blanco","politico","San Jose","59"]).
+famoso("Guillermo Solis",["hombre","negro","presidente","San Jose","62"]).
 famoso("Laura Chinchilla",["mujer","cafe","presidente","San Jose","61"]).
+famoso("Oscar Arias",["hombre","blanco","presidente","San Jose","79"]).
+
 
 %Deportes
 famoso("Keylor Navas", ["hombre", "negro", "futbolista","San Jose", "33"]).
+famoso("Joel Campbell", ["hombre", "negro", "futbolista","San Jose", "27"]).
 famoso("Shirley Cruz", ["mujer", "negro", "futbolista","San Jose", "34"]).
 
 %Farandula
+famoso("Maribel Guardia", ["mujer", "negro", "actriz", "San Jose", "61"]).
+famoso("Bali Rodriguez", ["mujer", "cafe", "modelo", "San Jose", "35"]).
+famoso("Harry Shum", ["hombre", "negro", "actor", "limon", "38"]).
 famoso("Edgar Silva", ["hombre", "negro", "presentador", "guanacaste", "52"]).
 famoso("Nancy Dobles", ["mujer", "negro", "presentador", "San Jose", "42"]).
 
 %Otros
 famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]).
+famoso("Devi Nova", ["mujer", "cafe", "cantante", "San Jose", "39"]).
+famoso("Daniel Salas", ["hombre", "negro", "ministro", "San Jose", "43"]).
 
-
+%Desarrolladores
 famoso("Agustin",["hombre","negro","estudiante","puntarenas","19"]).
 famoso("Fabian",["hombre","negro","estudiante","heredia","19"]).
 famoso("Abigail",["mujer","negro","estudiante","alajuela","20"]).
@@ -411,24 +430,33 @@ listaGenero(["hombre","Hombre","varon","Varon","masculino"]).
 %Por color de pelo
 listaPelo(["rubio","rubia","macho","macha"]).
 listaPelo(["negro", "oscuro"]).
+listaPelo(["blanco"]).
 listaPelo(["cafe", "castaño"]).
 
 %Por oficio__________________________
 
 %Politicas
 listaOficio(["presidente", "presidenta"]).
-listaOficio(["diputado","diputada"]).
+listaOficio(["diputado","diputada","Diputado","Diputada"]).
+listaOficio(["politico","Politico"]).
 %Deportes
 listaOficio(["futbolista", "portero", "delantero", "defensa", "medio", "mediocampista"]).
 
 %Farandula
-listaOficio(["presentador", "presentadora"]).
+listaOficio(["presentador", "presentadora","Presentador","Presentadora"]).
+listaOficio(["actriz","Actriz"]).
+listaOficio(["actor","Actor"]).
+listaOficio(["modelo","Modelo"]).
+listaOficio(["estudiante","Estudiante"]).
+
 
 %Otros
-listaOficio(["astronauta"]).
+listaOficio(["astronauta","Astronauta"]).
+listaOficio(["ministro","Ministro"]).
+listaOficio(["cantante","Cantante"]).
 
 
-listaLugares(["San Jose", "Jose", "jose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
+listaLugares(["San Jose", "Jose", "jose","SanJose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
 listaLugares(["alajuela", "Alajuela"]).
 listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
 listaLugares(["heredia", "Heredia"]).
