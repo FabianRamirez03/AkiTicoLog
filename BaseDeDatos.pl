@@ -455,7 +455,7 @@ listaOficio(["astronauta","Astronauta"]).
 listaOficio(["ministro","Ministro"]).
 listaOficio(["cantante","Cantante"]).
 
-
+%Lista de lugares
 listaLugares(["San Jose", "Jose", "jose","SanJose", "san jose", "Chepe", "chepe", "San jose", "san Jose"]).
 listaLugares(["alajuela", "Alajuela"]).
 listaLugares(["cartago", "cartago", "cartaguito", "Cartaguito"]).
@@ -469,7 +469,8 @@ listaLugares(["limon", "Limon"]).
 
 
 
-
+%Lista de edades.
+%Asocia el año en que nació con la edad actual
 
 listaAños(["90","1930"]).
 listaAños(["89","1931"]).

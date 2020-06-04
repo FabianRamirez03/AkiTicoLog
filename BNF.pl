@@ -67,6 +67,9 @@ identificacion(Nombre,H1,H2,H3,H4,H5) :-
     famoso(Nombre,Lista), miembro(H1,Lista),miembro(H2,Lista),
     miembro(H3,Lista),miembro(H4,Lista),miembro(H5,Lista).
 
+
+%Función principal que consulta al usuario y da un veredicto final
+
 inicio() :-
 
     nl,

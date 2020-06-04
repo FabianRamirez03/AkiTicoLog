@@ -393,7 +393,7 @@ famoso("Carlos Alvarado",["hombre","negro","presidente","San Jose","40"]).
 famoso("Otto guevara",["hombre","blanco","politico","San Jose","59"]).
 famoso("Guillermo Solis",["hombre","negro","presidente","San Jose","62"]).
 famoso("Laura Chinchilla",["mujer","cafe","presidente","San Jose","61"]).
-famoso("Oscar Arias",["hombre","blanco","presidente","San Jose","79"]). %
+famoso("Oscar Arias",["hombre","blanco","presidente","San Jose","79"]).
 
 
 %Deportes
@@ -409,7 +409,7 @@ famoso("Edgar Silva", ["hombre", "negro", "presentador", "guanacaste", "52"]).
 famoso("Nancy Dobles", ["mujer", "negro", "presentador", "San Jose", "42"]).
 
 %Otros
-famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]). %
+famoso("Franklin Chang", ["hombre", "negro", "astronauta", "San Jose", "70"]).
 famoso("Devi Nova", ["mujer", "cafe", "cantante", "San Jose", "39"]).
 famoso("Daniel Salas", ["hombre", "negro", "ministro", "San Jose", "43"]).
 
