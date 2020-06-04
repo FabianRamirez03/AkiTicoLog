@@ -70,7 +70,7 @@ identificacion(Nombre,H1,H2,H3,H4,H5) :-
 
 %Función principal que consulta al usuario y da un veredicto final
 
-inicio() :-
+inicio:-
 
     nl,
     writeln("Piensa en un personaje y responde las siguientes preguntas"),
